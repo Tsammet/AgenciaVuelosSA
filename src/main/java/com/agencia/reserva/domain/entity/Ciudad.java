@@ -1,3 +1,4 @@
+
 package com.agencia.reserva.domain.entity;
 
 public class Ciudad {

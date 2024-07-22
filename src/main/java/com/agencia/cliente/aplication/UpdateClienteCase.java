@@ -8,10 +8,11 @@ import com.agencia.cliente.domain.service.ClienteService;
 public class UpdateClienteCase {
     private final ClienteService clienteService;
 
-    public UpdateClienteCase(ClienteService clienteService){
+    public UpdateClienteCase(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
-    public void execute(Cliente cliente) throws SQLException{
+
+    public void execute(Cliente cliente) {
         clienteService.updateCliente(cliente);
     }
 }

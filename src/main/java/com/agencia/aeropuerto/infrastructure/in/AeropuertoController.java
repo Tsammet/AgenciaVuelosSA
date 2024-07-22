@@ -1,8 +1,8 @@
 
 package com.agencia.aeropuerto.infrastructure.in;
 
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.util.Scanner;
+
 import com.agencia.aeropuerto.aplication.CreateAeropuertoCase;
 import com.agencia.aeropuerto.aplication.DeleteAeropuertoCase;
 import com.agencia.aeropuerto.aplication.FindAeropuertoCase;
@@ -10,10 +10,10 @@ import com.agencia.aeropuerto.aplication.UpdateAeropuertoCase;
 import com.agencia.aeropuerto.domain.entity.Aeropuerto;
 
 public class AeropuertoController {
-    private CreateAeropuertoCase createAeropuertoCase;
-    private FindAeropuertoCase findAeropuertoCase;
-    private DeleteAeropuertoCase deleteAeropuertoCase;
-    private UpdateAeropuertoCase updateAeropuertoCase;
+    private final CreateAeropuertoCase createAeropuertoCase;
+    private final FindAeropuertoCase findAeropuertoCase;
+    private final DeleteAeropuertoCase deleteAeropuertoCase;
+    private final UpdateAeropuertoCase updateAeropuertoCase;
 
     public AeropuertoController(CreateAeropuertoCase createAeropuertoCase, FindAeropuertoCase findAeropuertoCase,
             DeleteAeropuertoCase deleteAeropuertoCase, UpdateAeropuertoCase updateAeropuertoCase) {
@@ -23,55 +23,109 @@ public class AeropuertoController {
         this.updateAeropuertoCase = updateAeropuertoCase;
     }
 
-    public AeropuertoController(CreateAeropuertoCase createAeropuertoCase) {
-        this.createAeropuertoCase = createAeropuertoCase;
-    }
+    Scanner scanner = new Scanner(System.in);
 
-    public void crear() throws SQLException {
-        String nombreae = JOptionPane.showInputDialog("Cual es el nombre del aeropuerto?");
-        String idaeropuerto = JOptionPane.showInputDialog("Id del Aeropuerto");
-        String idciudadae = JOptionPane.showInputDialog("Id de la ciudad: ");
+    public void gestionAeropuerto(){
+        while(true){
+            System.out.println("1. Crear Aeropuerto: ");
+            System.out.println("2. Borrar Aeropuerto: ");
+            System.out.println("3. Encontrar Aeropuerto: ");
+            System.out.println("4. Actualizar Aeropuerto: ");
+            System.out.println("5. Salir: ");
+            
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
 
-        Aeropuerto aeropuerto = new Aeropuerto();
-        aeropuerto.setNombreae(nombreae);
-        aeropuerto.setId(idaeropuerto);
-        aeropuerto.setIdciudadae(idciudadae);
+            switch (opcion) {
+                case 1:
+                    createAeropuerto();
+                    break;
 
-        createAeropuertoCase.execute(aeropuerto);
-        JOptionPane.showMessageDialog(null, "Aeropuerto Creado Correctamente!");
-    }
+                case 2:
+                    deleteAeropuerto();           
+                    break;
 
-    public void buscar() throws SQLException {
-        String idaeropuerto = JOptionPane.showInputDialog("Ingrese ID del Aeropuerto");
-        Aeropuerto aeropuerto = findAeropuertoCase.execute(idaeropuerto);
+                case 3:
+                    findAeropuerto();
+                    break;
 
-        if (aeropuerto != null) {
-            System.out.println("Id: " + aeropuerto.getId());
-            System.out.println("Nombre: " + aeropuerto.getNombreae());
-            System.out.println("ID de la ciudad: " + aeropuerto.getIdciudadae());
-        } else {
-            JOptionPane.showMessageDialog(null, "Aeropuerto no encontrado!");
+                case 4:
+                    updateAeropuerto();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
-    public void actualizar() throws SQLException {
-        String idaeropuerto = JOptionPane.showInputDialog("Ingrese ID del Aeropuerto a Modificar.");
-        String nombreae = JOptionPane.showInputDialog("Cual es el nombre del aeropuerto?");
-        String idciudadae = JOptionPane.showInputDialog("Id de la Ciudad?");
+    public void createAeropuerto(){
+
+        System.out.println("Introduce el ID del aeropuerto: ");
+        String idaeropuerto = scanner.nextLine();
+
+        System.out.println("Introduce el nombre del aeropuerto: ");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Ingrese el ID de la ciudad del aeropuerto: ");
+        String idciudad = scanner.nextLine();
 
         Aeropuerto aeropuerto = new Aeropuerto();
         aeropuerto.setId(idaeropuerto);
-        aeropuerto.setNombreae(nombreae);
-        aeropuerto.setIdciudadae(idciudadae);
+        aeropuerto.setNombreAero(nombre);
+        aeropuerto.setIdCiudad(idciudad);
 
-        updateAeropuertoCase.execute(aeropuerto);
-        JOptionPane.showMessageDialog(null, "Aeropuerto Modificado Correctamente!");
+        createAeropuertoCase.execute(aeropuerto);
+        System.out.println("Aeropuerto Creado Correctamente!");
     }
 
-    public void eliminar() throws SQLException {
-        String idaeropuerto = JOptionPane.showInputDialog("Id del Aeropuerto a Eliminar.");
+    public void findAeropuerto(){
+        System.out.println("Ingrese ID del Aeropuerto que desea encontrar: ");
+        String idaeropuerto = scanner.nextLine();
 
-        deleteAeropuertoCase.execute(idaeropuerto);
-        JOptionPane.showMessageDialog(null, "Aeropuerto Eliminado Correctamente!");
+        Aeropuerto foundAeropuerto = findAeropuertoCase.execute(idaeropuerto);
+
+        if (foundAeropuerto != null) {
+            System.out.println("Id: " + foundAeropuerto.getId());
+            System.out.println("Nombre: " + foundAeropuerto.getNombreAero());
+            System.out.println("ID de la ciudad: " + foundAeropuerto.getIdCiudad());
+        } else {
+            System.out.println("Aeropuerto no encontrado!");
+        }
+    }
+
+    public void updateAeropuerto(){
+        System.out.println("Ingrese el id para actualizar el aeropuerto: ");
+        String idAeropuertoUpdate = scanner.nextLine();
+
+        System.out.println("Ingrese el nuevo nombre del aeropuerto: ");
+        String nuevoNombre = scanner.nextLine();
+
+        System.out.println("Ingrese el nuevo ID de la ciudad del aeropuerto: ");
+        String nuevaCiudad = scanner.nextLine();
+        scanner.nextLine();
+
+        Aeropuerto newAeropuerto = new Aeropuerto();
+
+        newAeropuerto.setId(idAeropuertoUpdate);
+        newAeropuerto.setNombreAero(nuevoNombre);
+        newAeropuerto.setIdCiudad(nuevaCiudad);
+
+        updateAeropuertoCase.execute(newAeropuerto);
+        System.out.println("Aeropuerto actualizado correctamente!");
+    }
+
+    public void deleteAeropuerto(){
+        System.out.println("Ingrese el id para eliminar el aeropuerto");
+        String deleteAeropuerto = scanner.nextLine();
+
+        // User userD = new User();
+        deleteAeropuertoCase.execute(deleteAeropuerto);
+
+        if(deleteAeropuertoCase != null){
+            System.out.println("Aeropuerto eliminado");
+        }else{
+            System.out.println("Aeropuerto no encontrado");
+        }
     }
 }

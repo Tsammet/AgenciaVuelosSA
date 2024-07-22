@@ -1,12 +1,12 @@
 package com.agencia.reserva.application;
 
 import com.agencia.reserva.domain.entity.Reserva;
-import com.agencia.reserva.domain.service.ReservaServiceOlf;
+import com.agencia.reserva.domain.service.ReservaService;
 
 public class CreateReservaAgenteUseCase {
-    private final ReservaServiceOlf reservaServiceOlf;
+    private final ReservaService reservaServiceOlf;
     
-    public CreateReservaAgenteUseCase(ReservaServiceOlf reservaServiceOlf) {
+    public CreateReservaAgenteUseCase(ReservaService reservaServiceOlf) {
         this.reservaServiceOlf = reservaServiceOlf;
     }
 

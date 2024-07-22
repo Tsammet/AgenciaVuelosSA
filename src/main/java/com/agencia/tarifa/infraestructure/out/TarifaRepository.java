@@ -44,7 +44,9 @@ public class TarifaRepository implements TarifaService {
       ps.setBigDecimal(3, tarifa.getValor());
 
       ps.executeUpdate();
+
       System.out.println("Tarifa creada con éxito!");
+
     } catch (SQLException e) {
       e.printStackTrace();
 
@@ -61,7 +63,9 @@ public class TarifaRepository implements TarifaService {
       statement.setString(2, tarifa.getDescripcion());
       statement.setBigDecimal(3, tarifa.getValor());
       statement.setInt(4, tarifa.getId());
+
       int rowsUpdate = statement.executeUpdate();
+
       System.out.println("Numero de filas actualizadas  " + rowsUpdate);
 
     } catch (SQLException e) {
@@ -100,18 +104,19 @@ public class TarifaRepository implements TarifaService {
   public void deleteTarifa(int id) {
     try{
     String sql = "DELETE FROM tarifasvuelos WHERE id = ?";
-        int rowsUpdate = 0;
-    
-             PreparedStatement statement = connection.prepareStatement(sql) ;
-    
-            statement.setInt(1, id);
-            rowsUpdate = statement.executeUpdate();
-    
-            System.out.println("Número de filas eliminadas: " + rowsUpdate);
-    
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+      int rowsUpdate = 0;
+
+        PreparedStatement statement = connection.prepareStatement(sql) ;
+
+        statement.setInt(1, id);
+        rowsUpdate = statement.executeUpdate();
+
+        System.out.println("Número de filas eliminadas: " + rowsUpdate);
+
+      } catch (SQLException e) {
+          e.printStackTrace();
+      }
         
 
-}}
+  }
+}

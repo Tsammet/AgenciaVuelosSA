@@ -9,4 +9,5 @@ public interface TarifaService {
     void updateTarifa(Tarifa tarifa);
     Tarifa findTarifa(int id);
     void deleteTarifa(int id);
+    
 }

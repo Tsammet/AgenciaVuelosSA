@@ -6,26 +6,68 @@ public class Reserva {
     private int idVuelo;
     private int idCliente;
     private String estado;
+    private int idReservaDetalle;
+    private int idtarifa;
     private int precio;
     private String aeropuertoOrigen;
     private String aeropuertoDestino;
     private String nombreCliente;
-    private String numeroDocumento;
-    public Reserva() {
-    }
+    private String metodoPago;
     
-    public Reserva(int id, String fechaReserva, int idVuelo, int idCliente, String estado, int precio,
-            String aeropuertoOrigen, String aeropuertoDestino, String nombreCliente, String numeroDocumento) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public void setFechaReserva(String fechaReserva) {
         this.fechaReserva = fechaReserva;
+    }
+
+    public int getIdVuelo() {
+        return idVuelo;
+    }
+
+    public void setIdVuelo(int idVuelo) {
         this.idVuelo = idVuelo;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
         this.estado = estado;
-        this.precio = precio;
-        this.aeropuertoOrigen = aeropuertoOrigen;
-        this.aeropuertoDestino = aeropuertoDestino;
-        this.nombreCliente = nombreCliente;
-        this.numeroDocumento = numeroDocumento;
+    }
+
+    public int getIdReservaDetalle() {
+        return idReservaDetalle;
+    }
+
+    public void setIdReservaDetalle(int idReservaDetalle) {
+        this.idReservaDetalle = idReservaDetalle;
+    }
+
+    public int getIdtarifa() {
+        return idtarifa;
+    }
+
+    public void setIdtarifa(int idtarifa) {
+        this.idtarifa = idtarifa;
     }
 
     public int getPrecio() {
@@ -60,45 +102,38 @@ public class Reserva {
         this.nombreCliente = nombreCliente;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public String getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
     }
 
-    public int getId() {
-        return id;
+    public Reserva() {
     }
-    public void setId(int id) {
+
+    public Reserva(int id, String fechaReserva, int idVuelo, int idCliente, String estado, int idReservaDetalle,
+            int idtarifa, int precio, String aeropuertoOrigen, String aeropuertoDestino, String nombreCliente,
+            String metodoPago) {
         this.id = id;
-    }
-    public String getFechaReserva() {
-        return fechaReserva;
-    }
-    public void setFechaReserva(String fechaReserva) {
         this.fechaReserva = fechaReserva;
-    }
-    public int getIdVuelo() {
-        return idVuelo;
-    }
-    public void setIdVuelo(int idVuelo) {
         this.idVuelo = idVuelo;
-    }
-    public int getIdCliente() {
-        return idCliente;
-    }
-    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-    }
-    public String getEstado() {
-        return estado;
-    }
-    public void setEstado(String estado) {
         this.estado = estado;
+        this.idReservaDetalle = idReservaDetalle;
+        this.idtarifa = idtarifa;
+        this.precio = precio;
+        this.aeropuertoOrigen = aeropuertoOrigen;
+        this.aeropuertoDestino = aeropuertoDestino;
+        this.nombreCliente = nombreCliente;
+        this.metodoPago = metodoPago;
     }
 
+    
+    
+    
+  
     
 
 }

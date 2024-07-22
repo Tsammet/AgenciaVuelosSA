@@ -4,13 +4,7 @@ public class DetalleReserva {
 int id;
 int idReserva;
 int idPasajero;
-public DetalleReserva(int id, int idReserva, int idPasajero) {
-    this.id = id;
-    this.idReserva = idReserva;
-    this.idPasajero = idPasajero;
-}
-public DetalleReserva() {
-}
+int idTarifa;
 public int getId() {
     return id;
 }
@@ -29,6 +23,19 @@ public int getIdPasajero() {
 public void setIdPasajero(int idPasajero) {
     this.idPasajero = idPasajero;
 }
-
+public int getIdTarifa() {
+    return idTarifa;
+}
+public void setIdTarifa(int idTarifa) {
+    this.idTarifa = idTarifa;
+}
+public DetalleReserva() {
+}
+public DetalleReserva(int id, int idReserva, int idPasajero, int idTarifa) {
+    this.id = id;
+    this.idReserva = idReserva;
+    this.idPasajero = idPasajero;
+    this.idTarifa = idTarifa;
+}
 
 }

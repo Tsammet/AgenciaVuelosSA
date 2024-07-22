@@ -1,3 +1,4 @@
+
 package com.agencia.avion.infraestructure;
 
 import java.sql.Connection;
@@ -82,7 +83,7 @@ public class AvionRepository implements AvionService{
 
             ps.executeUpdate();
 
-            System.out.println("<3");
+            System.out.println("Avión actualizado correctamente");
         }catch (SQLException e) {
             e.printStackTrace();
 
@@ -140,4 +141,3 @@ public class AvionRepository implements AvionService{
         throw new UnsupportedOperationException("Unimplemented method 'deleteAvion'");
     }
 }
-

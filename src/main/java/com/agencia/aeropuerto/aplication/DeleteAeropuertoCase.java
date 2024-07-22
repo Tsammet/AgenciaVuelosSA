@@ -1,3 +1,4 @@
+
 package com.agencia.aeropuerto.aplication;
 
 import com.agencia.aeropuerto.domain.service.AeropuertoService;
@@ -9,8 +10,8 @@ public class DeleteAeropuertoCase {
         this.aeropuertoService = aeropuertoService;
     }
 
-    public void execute(String id){
-        aeropuertoService.deleteAeropuerto(id);
+    public void execute(String deleteAeropuerto){
+        aeropuertoService.deleteAeropuerto(deleteAeropuerto);
     }
 
 }

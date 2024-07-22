@@ -1,3 +1,4 @@
+
 package com.agencia.cliente.infrastructure.out;
 
 import java.sql.Connection;
@@ -11,7 +12,6 @@ import com.agencia.cliente.domain.entity.Cliente;
 import com.agencia.cliente.domain.service.ClienteService;
 
 public class ClienteRepository implements ClienteService {
-
     private Connection connection;
 
     public ClienteRepository() {
@@ -87,7 +87,6 @@ public class ClienteRepository implements ClienteService {
                         cliente.setEdad(resultSet.getInt("edad"));
                         cliente.setIdtipodocumento(resultSet.getInt("idtipodocumento"));
                         cliente.setNumerodocumento(resultSet.getString("numerodocumento"));
-                        cliente.setTipodocumento(resultSet.getString("nombre_tipodocumento"));
                    
                         cliente.setRol(resultSet.getInt("rol"));
                                             }

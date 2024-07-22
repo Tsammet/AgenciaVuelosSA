@@ -109,10 +109,3 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
     }
        
 }
-
-    
-
-   
-
-
-

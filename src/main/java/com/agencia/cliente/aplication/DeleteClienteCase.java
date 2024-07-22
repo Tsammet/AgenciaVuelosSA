@@ -7,11 +7,11 @@ import com.agencia.cliente.domain.service.ClienteService;
 public class DeleteClienteCase {
     private final ClienteService clienteService;
 
-    public DeleteClienteCase(ClienteService clienteService){
+    public DeleteClienteCase(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
 
-    public void execute(int id) throws SQLException{
+    public void execute(int id) {
         clienteService.deleteCliente(id);
     }
 }

@@ -1,3 +1,4 @@
+
 package com.agencia.avion.domain.entity;
 public class Avion {
     private int id;

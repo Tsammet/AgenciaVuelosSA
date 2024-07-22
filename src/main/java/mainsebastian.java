@@ -1,142 +1,71 @@
+import java.util.Scanner;
 
-import java.sql.SQLException;
-
-import javax.swing.JOptionPane;
-
-import com.agencia.escala.application.FindEscalaUseCase;
-import com.agencia.escala.infraestructure.EscalaRepository;
-import com.agencia.reserva.application.AsignarsillaUseCase;
-import com.agencia.reserva.application.BuscarCiudades;
-import com.agencia.reserva.application.BuscarSillasOcupadas;
-import com.agencia.reserva.application.BuscarTiposDocumentos;
-import com.agencia.reserva.application.BuscarvuelosUseCase;
-import com.agencia.reserva.application.ConsultvueloUseCase;
-import com.agencia.reserva.application.CrearReservaDetalleUseCase;
-import com.agencia.reserva.application.CrearReservaUseCase;
-import com.agencia.reserva.application.VerificarPasajero;
-import com.agencia.reserva.domain.service.vueloService;
-import com.agencia.reserva.infraestructure.in.vueloController;
-import com.agencia.reserva.infraestructure.out.vueloRepository;
 import com.agencia.tarifa.application.CreateTarifaUseCase;
 import com.agencia.tarifa.application.DeleteTarifaUseCase;
 import com.agencia.tarifa.application.FindTarifaUseCase;
 import com.agencia.tarifa.application.UpdateTarifaUseCase;
-import com.agencia.tarifa.domain.service.TarifaService;
 import com.agencia.tarifa.infraestructure.in.TarifaController;
 import com.agencia.tarifa.infraestructure.out.TarifaRepository;
+import com.agencia.trayecto.application.AsignAvionTrayectoUseCase;
+import com.agencia.vuelo.application.AddPasajeroUseCase;
+import com.agencia.vuelo.application.AsignarAsientoUseCase;
+import com.agencia.vuelo.application.CreateReservaxClienteUseCase;
+import com.agencia.vuelo.application.FindvueloUseCase;
+import com.agencia.vuelo.application.MostrarAsientoUseCase;
+import com.agencia.vuelo.application.SearchVueloxCiudadUseCase;
+import com.agencia.vuelo.infraestructure.vueloController;
+import com.agencia.vuelo.infraestructure.vueloRepository;
 
 public class mainsebastian {
     public static void main(String[] args) {
-        // Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        try {
-            Object[] options = { "tarifas", "vuelos", "salir" };
-            Object menu = JOptionPane.showInputDialog(null, "Seleccione Una Opcion",
-                    "menuprincipal", JOptionPane.QUESTION_MESSAGE, null, options, "tarifas");
+        TarifaRepository tarifaRepository = new TarifaRepository();
+        CreateTarifaUseCase createTarifaUseCase = new CreateTarifaUseCase(tarifaRepository);
+        FindTarifaUseCase findTarifaUseCase = new FindTarifaUseCase(tarifaRepository);
+        DeleteTarifaUseCase deleteTarifaUseCase = new DeleteTarifaUseCase(tarifaRepository);
+        UpdateTarifaUseCase updateTarifaUseCase = new UpdateTarifaUseCase(tarifaRepository);
 
-            int selectedIndex = -1; // default value for no selection or "Seleccione"
-            for (int i = 0; i < options.length; i++) {
-                if (options[i].equals(menu)) {
-                    selectedIndex = i;
-                    break;
-                }
-            }
+        TarifaController tarifaController = new TarifaController(createTarifaUseCase, findTarifaUseCase, deleteTarifaUseCase, updateTarifaUseCase);
+            
+        vueloRepository vueloRepository = new vueloRepository();
+        FindvueloUseCase findvueloUseCase = new FindvueloUseCase(vueloRepository);
+        SearchVueloxCiudadUseCase searchVueloxCiudadUseCase = new SearchVueloxCiudadUseCase(vueloRepository);
+        CreateReservaxClienteUseCase createReservaxClienteUseCase = new CreateReservaxClienteUseCase(vueloRepository);
+        AddPasajeroUseCase addPasajeroUseCase = new AddPasajeroUseCase(vueloRepository);
+        MostrarAsientoUseCase mostrarAsientoUseCase = new MostrarAsientoUseCase(vueloRepository);
+        AsignarAsientoUseCase asignarAsientoUseCase = new AsignarAsientoUseCase(vueloRepository);
 
-            switch (selectedIndex) {
-                case 0:
+        vueloController vueloController = new vueloController(findvueloUseCase, searchVueloxCiudadUseCase, createReservaxClienteUseCase, addPasajeroUseCase, mostrarAsientoUseCase, asignarAsientoUseCase);
+    
+        while(true){
+            System.out.println("1. Gestor de Tarifas: ");
+            System.out.println("2. Gestor de Vuelos");
+            System.out.println("3. Salir");
 
-                    TarifaService tarifaService = new TarifaRepository();
-                    CreateTarifaUseCase createtarifaUseCase = new CreateTarifaUseCase(tarifaService);
-                    FindTarifaUseCase findtarifaUseCase = new FindTarifaUseCase(tarifaService);
-                    UpdateTarifaUseCase updateCaseUsetarifa = new UpdateTarifaUseCase(tarifaService);
-                    DeleteTarifaUseCase deletetarifaUseCase = new DeleteTarifaUseCase(tarifaService);
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
 
-                    TarifaController consoleAdapter = new TarifaController(createtarifaUseCase, findtarifaUseCase,
-                            deletetarifaUseCase, updateCaseUsetarifa);
-                    Object[] optionstarifa = { "Crear tarifa", "Buscar tarifa", "Editar tarifa", "Eliminar tarifa",
-                            " Salir" };
-                    Object menutarifa = JOptionPane.showInputDialog(null, "Seleccione Una Opcion",
-                            "MYSQL", JOptionPane.QUESTION_MESSAGE, null, optionstarifa, "Crear usuario");
-
-                    int selectedIndexTarifa = -1; // default value for no selection or "Seleccione"
-                    for (int i = 0; i < options.length; i++) {
-                        if (optionstarifa[i].equals(menutarifa)) {
-                            selectedIndexTarifa = i;
-                            break;
-                        }
-                    }
-
-                    switch (selectedIndexTarifa) {
-                        case 0:
-                            consoleAdapter.crear();
-                            break;
-                        case 1:
-                            consoleAdapter.buscar();
-                            break;
-                        case 2:
-                            consoleAdapter.actualizar();
-                            break;
-                        case 3:
-                            consoleAdapter.eliminar();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
+            switch (opcion) {
                 case 1:
-                    vueloService vueloService = new vueloRepository();
-                            EscalaRepository escalaRepository = new EscalaRepository();
-        FindEscalaUseCase findEscalaUseCase = new FindEscalaUseCase(escalaRepository);
+                    
+                    tarifaController.gestionTarifas();
 
-                    ConsultvueloUseCase consultvueloUseCase = new ConsultvueloUseCase(vueloService);
-                    BuscarCiudades buscarCiudades = new BuscarCiudades(vueloService);
-                    BuscarvuelosUseCase buscarvuelosUseCase = new BuscarvuelosUseCase(vueloService);
-                    CrearReservaUseCase crearReservaUseCase = new CrearReservaUseCase(vueloService);
-                    VerificarPasajero verificarPasajero = new VerificarPasajero(vueloService);
-                    BuscarTiposDocumentos buscarTiposDocumentos = new BuscarTiposDocumentos(vueloService);
-                    AsignarsillaUseCase asignarSillaUseCase = new AsignarsillaUseCase(vueloService);
-                    CrearReservaDetalleUseCase crearReservaDetalleUseCase = new CrearReservaDetalleUseCase(
-                            vueloService);
-                    BuscarSillasOcupadas buscarSillasOcupadas = new BuscarSillasOcupadas(vueloService);
+                    break;
+            
+                case 2:
 
-                    vueloController consoleAdapterVuelo = new vueloController(consultvueloUseCase, buscarCiudades,
-                            buscarvuelosUseCase, crearReservaUseCase, verificarPasajero, buscarTiposDocumentos,
-                            findEscalaUseCase, crearReservaDetalleUseCase, asignarSillaUseCase, buscarSillasOcupadas);
-                    Object[] optionsVuelos = { "Consultar vuelos", "Buscar vuelo", "Seleccionar vuelo",
-                            "Añadir pasajero", "Seleccionar asiento", " Salir" };
-                    Object menuVuelos = JOptionPane.showInputDialog(null, "Seleccione Una Opcion",
-                            "MYSQL", JOptionPane.QUESTION_MESSAGE, null, optionsVuelos, "Consultar vuelos");
+                    vueloController.gestionVuelo();
 
-                    int selectedIndexVuelo = -1; // default value for no selection or "Seleccione"
-                    for (int i = 0; i < options.length; i++) {
-                        if (optionsVuelos[i].equals(menuVuelos)) {
-                            selectedIndexVuelo = i;
-                            break;
-                        }
-                    }
+                case 3:
 
-                    switch (selectedIndexVuelo) {
-                        case 0:
-                            consoleAdapterVuelo.consultar();
-                            break;
-                        case 1:
-                            consoleAdapterVuelo.buscar();
+                    return;
 
-                            break;
-                        case 2:
-                            // consoleAdapter.actualizar();
-                            break;
-                        case 3:
-                            // consoleAdapter.eliminar();
-                            break;
-                        default:
-                            break;
-                    }
+                default:
+                    break;
             }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
         }
-
+            
+     
     }
 }
