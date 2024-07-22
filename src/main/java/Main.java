@@ -157,6 +157,7 @@ public class Main {
 
 
         while (true) {
+            
             System.out.println("1. Gestion Avión");
             System.out.println("2. Gestion Trayectos");
             System.out.println("3. Gestion Escalas");
@@ -206,22 +207,23 @@ public class Main {
 
 
                 case 7:
+
                     clienteController.gestionCliente();
                     break;
 
                 case 8:
+
                     aeropuertoController.gestionAeropuerto();
                     break;
 
                 case 9:
+
                     reservaController.gestionReserva();
                     break;
 
                 case 10:
 
-                    
                     tarifaController.gestionTarifas();
-
                     break;
 
                 case 11:
@@ -237,8 +239,10 @@ public class Main {
                     break;
                 
                 default:
+
                     System.out.println("Opción inválida");
                     break;
+
             }
         }
     }

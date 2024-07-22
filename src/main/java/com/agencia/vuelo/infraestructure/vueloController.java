@@ -71,7 +71,6 @@ public class vueloController {
                     break;
             }
         }
-
     }
 
     public void findVuelo(){
@@ -135,9 +134,9 @@ public class vueloController {
         }
 
         System.out.println("Deseas confirmar la selección del vuelo? (Si / No) : ");
-        String eleccionReserva = scanner.nextLine();
+        String eleccionReserva = scanner.nextLine().trim().toLowerCase();
 
-        if (eleccionReserva.equals("Si")) {
+        if (eleccionReserva.equals("si")) {
 
             Reserva reserva = new Reserva();
             reserva.setFechaReserva(vuelo.getFechaviaje());
