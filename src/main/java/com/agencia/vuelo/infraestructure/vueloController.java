@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import com.agencia.asientos.domain.entity.Asiento;
 import com.agencia.asientos.domain.entity.AsientoDetalle;
+import com.agencia.escala.application.FindEscalaUseCase;
+import com.agencia.escala.domain.entity.Escala;
 import com.agencia.reserva.domain.entity.DetalleReserva;
 import com.agencia.reserva.domain.entity.Reserva;
 import com.agencia.vuelo.application.AddPasajeroUseCase;
@@ -26,15 +28,17 @@ public class vueloController {
     private final AddPasajeroUseCase addPasajeroUseCase;
     private final MostrarAsientoUseCase mostrarAsientoUseCase;
     private final AsignarAsientoUseCase asignarAsientoUseCase;
+    private final FindEscalaUseCase findEscalaUseCase;
 
     public vueloController(FindvueloUseCase findvueloUseCase, SearchVueloxCiudadUseCase searchVueloxCiudadUseCase, CreateReservaxClienteUseCase createReservaxClienteUseCase, AddPasajeroUseCase addPasajeroUseCase,
-    MostrarAsientoUseCase mostrarAsientoUseCase, AsignarAsientoUseCase asignarAsientoUseCase) {
+    MostrarAsientoUseCase mostrarAsientoUseCase, AsignarAsientoUseCase asignarAsientoUseCase, FindEscalaUseCase findEscalaUseCase) {
         this.findvueloUseCase = findvueloUseCase;
         this.searchVueloxCiudadUseCase = searchVueloxCiudadUseCase;
         this.createReservaxClienteUseCase = createReservaxClienteUseCase;
         this.addPasajeroUseCase = addPasajeroUseCase;
         this.mostrarAsientoUseCase = mostrarAsientoUseCase;
         this.asignarAsientoUseCase = asignarAsientoUseCase;
+        this.findEscalaUseCase = findEscalaUseCase;
        }
 
 
@@ -104,6 +108,8 @@ public class vueloController {
         vuelos = searchVueloxCiudadUseCase.execute(ciudadOrigen, ciudadDestino);
 
         if (!vuelos.isEmpty()) {
+            System.out.println("-------------------------------------------");
+            System.out.println("Estos son los vuelos disponibles: ");
 
             for (Vuelos vuelo : vuelos ) {
                 System.out.println("-------------------");
@@ -118,12 +124,13 @@ public class vueloController {
             System.out.println("Vuelo no encontrado");
         }
 
-        System.out.println("Digite el id del viaje que deseas escoger: ");
+        System.out.println("Digite el id del vuelo que desea seleccionar : ");
         int idViajeEscoger = scanner.nextInt();
         scanner.nextLine();
         Vuelos vuelo = findvueloUseCase.execute(idViajeEscoger);
 
         if (vuelo != null) {
+            System.out.println("Usted ha seleccionado el siguiente vuelo: ");
             System.out.println("Id vuelo: " + vuelo.getId());
             System.out.println("Fecha de viaje: " + vuelo.getFechaviaje());
             System.out.println("Precio  viaje: " + vuelo.getPrecioviaje());
@@ -132,7 +139,7 @@ public class vueloController {
         }else{
             System.out.println("Vuelo no encontrado");
         }
-
+        System.out.println("-------------------------------------------------------");
         System.out.println("Deseas confirmar la selección del vuelo? (Si / No) : ");
         String eleccionReserva = scanner.nextLine().trim().toLowerCase();
 
@@ -147,7 +154,7 @@ public class vueloController {
             reserva.setIdCliente(idCliente);
 
             createReservaxClienteUseCase.execute(reserva);
-            System.out.println("Reserva hecha.");
+            System.out.println("Reserva realizada satisfactoriamente.");
 
             this.lastReservaId = reserva.getId();
             
@@ -155,18 +162,22 @@ public class vueloController {
             System.out.println("Adios");
         }
 
+
+        // ESTO DEBERIA IR APARTE EN LA FUNCION DE "AÑADIR PASAJEROS AL VUELO"
+        // Preguntar nuevamente el ID del vuelo
+
         System.out.println("Desea agregar un pasajero? (Si / No)");
         String agregarPasajero = scanner.nextLine().trim().toLowerCase();
         
         while (agregarPasajero.equals("si")) {
             
-            System.out.println("Cuál es el id del pasajero: ");
+            System.out.println("Digite el ID del pasajero: ");
             int idPasajero = scanner.nextInt();
             scanner.nextLine();
 
             DetalleReserva detalleReserva = new DetalleReserva();
 
-            System.out.println("Cuál es el id de la tarifa: ");
+            System.out.println("Digite el ID de la tarifa: ");
             int idTarifa = scanner.nextInt();
             scanner.nextLine();
 
@@ -180,28 +191,57 @@ public class vueloController {
 
             System.out.println("Pasajero agregado");
 
+            //  FUNCION DE "SELECCIONAR ASIENTOS"
+
+            List<Escala> escalas= new ArrayList<>();
+            escalas = findEscalaUseCase.execute(idViajeEscoger); // Asumiendo que devuelve una lista de escalas
+
+            if (!escalas.isEmpty()) {
+                System.out.println(escalas);
+                // escalas.forEach(escala -> System.out.println(escala.getId()));
+
+                System.out.println("Las escalas de este vuelo son las siguientes: ");
+                System.out.println("-----------------------------------------------------");
+
+                for (Escala escala : escalas) {
+                    System.out.println("Escala id: " + escala.getId());
+                    System.out.println("Número de conexión: " + escala.getNumeroConexion());
+                    System.out.println("Id trayecto: " + escala.getIdViaje());
+                    System.out.println("Id Avión: " + escala.getIdAvion());
+                    System.out.println("Id aeropuerto origen: " + escala.getIdAeropuertoOrigen());
+                    System.out.println("Id aeropuerto destino: " + escala.getIdAeropuertoDestino());
+                    System.out.println("------------"); 
+                }
+            } else {
+                System.out.println("No se encontraron escalas para el id de viaje proporcionado.");
+            }
+
+            System.out.println("Digite el ID de la escala para la cual desea seleccionar asiento: ");
+            int escalaSeleccionada = scanner.nextInt();
+            scanner.nextLine();
+
             List<Asiento> asiento = mostrarAsientoUseCase.execute(idViajeEscoger);
+            System.out.println("----------------------------------");
             System.out.println("Asientos disponibles:");
 
             for (Asiento asientos : asiento) {
                 System.out.println("ID: " + asientos.getId() + ", Numero Asiento: " + asientos.getNumeroAsiento());
             }
 
-            System.out.println("Que id de asiento deseas elegir: ");
+            System.out.println("Selecciona el ID de asiento deseas elegir: ");
             int asientoElegir = scanner.nextInt();
             scanner.nextLine();
 
             AsientoDetalle asientoDetalle = new AsientoDetalle();
             asientoDetalle.setIdAsientos(asientoElegir);
 
-            System.out.println("Que conexión id es: ");
-            int idConexion = scanner.nextInt();
-            scanner.nextLine();
-            asientoDetalle.setIdConexion(idConexion);
+            asientoDetalle.setIdConexion(escalaSeleccionada);
 
             asientoDetalle.setIdDetalleReserva(this.lastDetalleReservaId);
 
             asignarAsientoUseCase.execute(asientoDetalle);
+
+            System.out.println("Asiento asignado correctamente. ");
 
 
             System.out.println("Desea agregar otro pasajero? (Si / No)");
