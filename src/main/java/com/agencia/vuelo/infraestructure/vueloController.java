@@ -18,6 +18,7 @@ import com.agencia.vuelo.domain.entity.Vuelos;
 
 public class vueloController {
     private int lastReservaId; 
+    private int lastDetalleReservaId;
 
     private final FindvueloUseCase findvueloUseCase;
     private final SearchVueloxCiudadUseCase searchVueloxCiudadUseCase;
@@ -175,6 +176,9 @@ public class vueloController {
             detalleReserva.setIdTarifa(idTarifa);
 
             addPasajeroUseCase.execute(detalleReserva);
+
+            this.lastDetalleReservaId = detalleReserva.getId();
+
             System.out.println("Pasajero agregado");
 
             List<Asiento> asiento = mostrarAsientoUseCase.execute(idViajeEscoger);
@@ -190,7 +194,16 @@ public class vueloController {
 
             AsientoDetalle asientoDetalle = new AsientoDetalle();
             asientoDetalle.setIdAsientos(asientoElegir);
-            asientoDetalle.setIdConexion(idViajeEscoger);
+
+            System.out.println("Que conexión id es: ");
+            int idConexion = scanner.nextInt();
+            scanner.nextLine();
+            asientoDetalle.setIdConexion(idConexion);
+
+            asientoDetalle.setIdDetalleReserva(this.lastDetalleReservaId);
+
+            asignarAsientoUseCase.execute(asientoDetalle);
+
 
             System.out.println("Desea agregar otro pasajero? (Si / No)");
             agregarPasajero = scanner.nextLine().trim().toLowerCase();

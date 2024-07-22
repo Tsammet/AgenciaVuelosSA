@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -141,14 +142,16 @@ public void createReserva(Reserva reserva) {
   
       ps.executeUpdate();
   
-      try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+      ResultSet generatedKeys = ps.getGeneratedKeys();
         if (generatedKeys.next()) {
             detalleReserva.setId(generatedKeys.getInt(1));
         }
-    }
-    }catch(SQLException e){
-      e.printStackTrace();
-  
+    
+    }catch (SQLIntegrityConstraintViolationException e) {
+        System.out.println("Error de integridad de la clave externa: " + e.getMessage());
+        e.printStackTrace();
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
   }  
 
@@ -178,7 +181,7 @@ public void createReserva(Reserva reserva) {
 public void createAsientoDetalle(AsientoDetalle asientoDetalle) {
   try{
 
-    String query = "INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetalleresesrva, idasientos) VALUES (?,?,?)";
+    String query = "INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetallereserva, idasientos) VALUES (?,?,?)";
     
     PreparedStatement ps=connection.prepareStatement(query);
 
