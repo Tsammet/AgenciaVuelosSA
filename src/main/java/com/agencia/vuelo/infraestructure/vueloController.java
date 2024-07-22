@@ -8,6 +8,7 @@ import com.agencia.asientos.domain.entity.Asiento;
 import com.agencia.asientos.domain.entity.AsientoDetalle;
 import com.agencia.escala.application.FindEscalaUseCase;
 import com.agencia.escala.domain.entity.Escala;
+import com.agencia.reserva.application.PagarValorReservaUseCase;
 import com.agencia.reserva.domain.entity.DetalleReserva;
 import com.agencia.reserva.domain.entity.Reserva;
 import com.agencia.vuelo.application.AddPasajeroUseCase;
@@ -29,9 +30,11 @@ public class vueloController {
     private final MostrarAsientoUseCase mostrarAsientoUseCase;
     private final AsignarAsientoUseCase asignarAsientoUseCase;
     private final FindEscalaUseCase findEscalaUseCase;
+    private final PagarValorReservaUseCase pagarValorReservaUseCase;
 
     public vueloController(FindvueloUseCase findvueloUseCase, SearchVueloxCiudadUseCase searchVueloxCiudadUseCase, CreateReservaxClienteUseCase createReservaxClienteUseCase, AddPasajeroUseCase addPasajeroUseCase,
-    MostrarAsientoUseCase mostrarAsientoUseCase, AsignarAsientoUseCase asignarAsientoUseCase, FindEscalaUseCase findEscalaUseCase) {
+    MostrarAsientoUseCase mostrarAsientoUseCase, AsignarAsientoUseCase asignarAsientoUseCase, FindEscalaUseCase findEscalaUseCase,
+    PagarValorReservaUseCase pagarValorReservaUseCase) {
         this.findvueloUseCase = findvueloUseCase;
         this.searchVueloxCiudadUseCase = searchVueloxCiudadUseCase;
         this.createReservaxClienteUseCase = createReservaxClienteUseCase;
@@ -39,6 +42,7 @@ public class vueloController {
         this.mostrarAsientoUseCase = mostrarAsientoUseCase;
         this.asignarAsientoUseCase = asignarAsientoUseCase;
         this.findEscalaUseCase = findEscalaUseCase;
+        this.pagarValorReservaUseCase = pagarValorReservaUseCase;
        }
 
 
@@ -246,7 +250,29 @@ public class vueloController {
 
             System.out.println("Desea agregar otro pasajero? (Si / No)");
             agregarPasajero = scanner.nextLine().trim().toLowerCase();
+
         }
+
+        System.out.println("Ingrese el método de pago que va a utilizar(TD=Tarjeta Debito / TC=Tarjeta Credito): ");
+        String metodoPago = scanner.nextLine().trim().toLowerCase();
+
+        System.out.println("Ingrese el número de la tarjeta: ");
+        String numeroTarjeta = scanner.nextLine();
+
+        System.out.println("Ingrese el código de confirmacion CVC: ");
+        String codigoPago = scanner.nextLine();
+
+        System.out.println("Pago registrado exitosamente. ");
+
+
+        Reserva pagoReserva = new Reserva();
+
+        pagoReserva.setId(lastReservaId);
+        pagoReserva.setMetodoPago(metodoPago);
+
+        pagarValorReservaUseCase.execute(pagoReserva);
+
+
 
     }
 

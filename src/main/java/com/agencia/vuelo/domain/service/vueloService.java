@@ -17,5 +17,6 @@ public interface vueloService {
     void addPasajero(DetalleReserva detalleReserva);
     List<Asiento> assignAsiento(int id);
     void createAsientoDetalle(AsientoDetalle asientoDetalle);
+    void pagarReserva(Reserva reserva);
 
 }
