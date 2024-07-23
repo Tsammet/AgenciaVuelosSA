@@ -41,7 +41,7 @@ public class vueloRepository implements vueloService {
 
 @Override
 public Vuelos findVuelo(int id) {
-    String query = "SELECT id, fechaviaje, precioviaje, idorigenaeropuerto, iddestionaeropuerto FROM viajes WHERE id = ?";
+    String query = "SELECT id, fechaviaje, precioviaje, idorigenaeropuerto, iddestinoaeropuerto FROM viajes WHERE id = ?";
     
     Vuelos vuelo = null;
     
@@ -57,7 +57,7 @@ public Vuelos findVuelo(int id) {
                 vuelo.setFechaviaje(rs.getString("fechaviaje"));
                 vuelo.setPrecioviaje(rs.getBigDecimal("precioviaje"));
                 vuelo.setIdorigen(rs.getString("idorigenaeropuerto"));
-                vuelo.setIddestino(rs.getString("iddestionaeropuerto"));
+                vuelo.setIddestino(rs.getString("iddestinoaeropuerto"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

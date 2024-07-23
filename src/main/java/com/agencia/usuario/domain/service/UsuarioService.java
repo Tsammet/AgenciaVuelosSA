@@ -4,6 +4,5 @@ import com.agencia.usuario.domain.entity.Usuario;
 
 public interface UsuarioService {
 
-    Usuario validarUsuario(int id);
-    void validarUsuario(Usuario usuario);
+    Usuario validarUsuario(Usuario usuario);
 }

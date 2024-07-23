@@ -11,10 +11,7 @@ public class ValidarUsuarioUseCase {
         this.usuarioService = usuarioService;
     }
 
-    public void execute(Usuario usuario){
-        usuarioService.validarUsuario(usuario);
+    public Usuario execute(Usuario usuario){
+        return usuarioService.validarUsuario(usuario);
     }
-
-    
-
 }
