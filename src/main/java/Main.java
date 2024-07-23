@@ -1,6 +1,4 @@
-
 import java.util.Scanner;
-
 import com.agencia.aeropuerto.aplication.CreateAeropuertoCase;
 import com.agencia.aeropuerto.aplication.DeleteAeropuertoCase;
 import com.agencia.aeropuerto.aplication.FindAeropuertoCase;
@@ -29,7 +27,6 @@ import com.agencia.reserva.application.CancelReservaClienteUseCase;
 import com.agencia.reserva.application.CreateReservaAgenteUseCase;
 import com.agencia.reserva.application.DeleteReservaAgenteUseCase;
 import com.agencia.reserva.application.FindReservaAgenteUseCase;
-import com.agencia.reserva.application.PagarValorReservaUseCase;
 import com.agencia.reserva.infraestructure.in.ReservaController;
 import com.agencia.reserva.infraestructure.out.ReservaRepository;
 import com.agencia.revision.application.CreateRevisionUseCase;
@@ -64,6 +61,7 @@ import com.agencia.vuelo.application.AsignarAsientoUseCase;
 import com.agencia.vuelo.application.CreateReservaxClienteUseCase;
 import com.agencia.vuelo.application.FindvueloUseCase;
 import com.agencia.vuelo.application.MostrarAsientoUseCase;
+import com.agencia.vuelo.application.PagarValorReservaUseCase;
 import com.agencia.vuelo.application.SearchVueloxCiudadUseCase;
 import com.agencia.vuelo.infraestructure.vueloController;
 import com.agencia.vuelo.infraestructure.vueloRepository;
@@ -71,89 +69,9 @@ import com.agencia.vuelo.infraestructure.vueloRepository;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        AvionRepository avionRepository = new AvionRepository();
-        TrayectoRepository trayectoRepository = new TrayectoRepository();
-        TipoDocumentoRepository tipoDocumentoRepository=new TipoDocumentoRepository();
-        EscalaRepository escalaRepository = new EscalaRepository();
-        RevisionRepository revisionRepository = new RevisionRepository();
-        TripulacionRepository tripulacionRepository = new TripulacionRepository();
-        ClienteRepository clienteRepository = new ClienteRepository();
-        AeropuertoRepository aeropuertoRepository = new AeropuertoRepository();
         ReservaRepository reservaRepository=new ReservaRepository();
-
-        FindAvionUseCase findAvionUseCase = new FindAvionUseCase(avionRepository);
-        CreateAvionUseCase createAvionUseCase = new CreateAvionUseCase(avionRepository);
-        DeleteAvionUseCase deleteAvionUseCase = new DeleteAvionUseCase(avionRepository);
-        UpdateAvionUseCase updateAvionUseCase = new UpdateAvionUseCase(avionRepository);
-
+        EscalaRepository escalaRepository = new EscalaRepository();
         FindEscalaUseCase findEscalaUseCase = new FindEscalaUseCase(escalaRepository);
-        UpdateEscalaUseCase updateEscalaUseCase = new UpdateEscalaUseCase(escalaRepository);
-        DeleteEscalaUseCase deleteEscalaUseCase = new DeleteEscalaUseCase(escalaRepository);
-        AsignAvionUseCase asignAvionUseCase = new AsignAvionUseCase(escalaRepository);
-
-        CreateRevisionUseCase createRevisionUseCase = new CreateRevisionUseCase(revisionRepository);
-        UpdateTrayectoUseCase updateTrayectoUseCase = new UpdateTrayectoUseCase(trayectoRepository);
-        DeleteTrayectoUseCase deleteTrayectoUseCase = new DeleteTrayectoUseCase(trayectoRepository);
-
-        CreateTripulacionUseCase createTripulacionUseCase = new CreateTripulacionUseCase(tripulacionRepository);
-        FindTripulacionUseCase findTripulacionUseCase=new FindTripulacionUseCase(tripulacionRepository);
-        TripulacionController tripulacionController = new TripulacionController(createTripulacionUseCase, findTripulacionUseCase);
-
-        AvionController avionController = new AvionController(createAvionUseCase, updateAvionUseCase, deleteAvionUseCase, findAvionUseCase);
-        EscalaController escalaController = new EscalaController(findEscalaUseCase, updateEscalaUseCase, deleteEscalaUseCase, asignAvionUseCase);
-        FindTrayectoUseCase findTrayectoUseCase = new FindTrayectoUseCase(trayectoRepository);
-        TrayectoController trayectoController = new TrayectoController(findTrayectoUseCase,updateTrayectoUseCase,deleteTrayectoUseCase); 
-        
-        FindRevisionUseCase findRevisionUseCase = new FindRevisionUseCase(revisionRepository);
-        UpdateRevisionUseCase updateRevisionUseCase = new UpdateRevisionUseCase(revisionRepository);
-        DeleteRevisionUseCase deleteRevisionUseCase = new DeleteRevisionUseCase(revisionRepository);
-        RevisionController revisionController = new RevisionController(createRevisionUseCase, updateRevisionUseCase, findRevisionUseCase, deleteRevisionUseCase);
-
-        CreateTipoDocumentoUseCase createTipoDocumentoUseCase=new CreateTipoDocumentoUseCase(tipoDocumentoRepository);
-        UpdateTipoDocumentoUseCase updateTipoDocumentoUseCase=new UpdateTipoDocumentoUseCase(tipoDocumentoRepository);
-        DeleteTipoDocumentoUseCase deleteTipoDocumentoUseCase=new DeleteTipoDocumentoUseCase(tipoDocumentoRepository);
-        FindTipoDocumentoUseCase findTipoDocumentoUseCase=new FindTipoDocumentoUseCase(tipoDocumentoRepository);
-        TipoDocumentoController tipoDocumentoController=new TipoDocumentoController(createTipoDocumentoUseCase, updateTipoDocumentoUseCase,deleteTipoDocumentoUseCase,findTipoDocumentoUseCase);
-       
-        CreateClienteCase createClienteCase = new CreateClienteCase(clienteRepository);
-        FindClienteCase findClienteCase = new FindClienteCase(clienteRepository);
-        UpdateClienteCase updateClienteCase = new UpdateClienteCase(clienteRepository);
-        DeleteClienteCase deleteClienteCase = new DeleteClienteCase(clienteRepository);
-        ClienteController clienteController = new ClienteController(createClienteCase, findClienteCase, deleteClienteCase, updateClienteCase);
-        
-        CreateAeropuertoCase createAeropuertoCase = new CreateAeropuertoCase(aeropuertoRepository);
-        FindAeropuertoCase findAeropuertoCase = new FindAeropuertoCase(aeropuertoRepository);
-        UpdateAeropuertoCase updateAeropuertoCase = new UpdateAeropuertoCase(aeropuertoRepository);
-        DeleteAeropuertoCase deleteAeropuertoCase = new DeleteAeropuertoCase(aeropuertoRepository);
-        AeropuertoController aeropuertoController = new AeropuertoController(createAeropuertoCase, findAeropuertoCase, deleteAeropuertoCase, updateAeropuertoCase);
-
-        CreateReservaAgenteUseCase createReservaAgenteUseCase=new CreateReservaAgenteUseCase(reservaRepository);
-        FindReservaAgenteUseCase findReservaAgenteUseCase=new FindReservaAgenteUseCase(reservaRepository); 
-        DeleteReservaAgenteUseCase deleteReservaAgenteUseCase=new DeleteReservaAgenteUseCase(reservaRepository);   
-        CancelReservaClienteUseCase cancelReservaClienteUseCase=new  CancelReservaClienteUseCase(reservaRepository); 
-        PagarValorReservaUseCase pagarValorReservaUseCase = new PagarValorReservaUseCase(reservaRepository);
-        ReservaController reservaController= new ReservaController(createReservaAgenteUseCase,findReservaAgenteUseCase,
-        deleteReservaAgenteUseCase,cancelReservaClienteUseCase, pagarValorReservaUseCase);
-
-        
-        TarifaRepository tarifaRepository = new TarifaRepository();
-        CreateTarifaUseCase createTarifaUseCase = new CreateTarifaUseCase(tarifaRepository);
-        FindTarifaUseCase findTarifaUseCase = new FindTarifaUseCase(tarifaRepository);
-        DeleteTarifaUseCase deleteTarifaUseCase = new DeleteTarifaUseCase(tarifaRepository);
-        UpdateTarifaUseCase updateTarifaUseCase = new UpdateTarifaUseCase(tarifaRepository);
-
-        TarifaController tarifaController = new TarifaController(createTarifaUseCase, findTarifaUseCase, deleteTarifaUseCase, updateTarifaUseCase);
-            
-        vueloRepository vueloRepository = new vueloRepository();
-        FindvueloUseCase findvueloUseCase = new FindvueloUseCase(vueloRepository);
-        SearchVueloxCiudadUseCase searchVueloxCiudadUseCase = new SearchVueloxCiudadUseCase(vueloRepository);
-        CreateReservaxClienteUseCase createReservaxClienteUseCase = new CreateReservaxClienteUseCase(vueloRepository);
-        AddPasajeroUseCase addPasajeroUseCase = new AddPasajeroUseCase(vueloRepository);
-        MostrarAsientoUseCase mostrarAsientoUseCase = new MostrarAsientoUseCase(vueloRepository);
-        AsignarAsientoUseCase asignarAsientoUseCase = new AsignarAsientoUseCase(vueloRepository);
-
-        vueloController vueloController = new vueloController(findvueloUseCase, searchVueloxCiudadUseCase, createReservaxClienteUseCase, addPasajeroUseCase, mostrarAsientoUseCase, asignarAsientoUseCase, findEscalaUseCase, pagarValorReservaUseCase);
-    
 
 
         while (true) {
@@ -176,31 +94,69 @@ public class Main {
             
             switch (opcion) {
                 case 1:
+                    AvionRepository avionRepository = new AvionRepository();
+                    FindAvionUseCase findAvionUseCase = new FindAvionUseCase(avionRepository);
+                    CreateAvionUseCase createAvionUseCase = new CreateAvionUseCase(avionRepository);
+                    DeleteAvionUseCase deleteAvionUseCase = new DeleteAvionUseCase(avionRepository);
+                    UpdateAvionUseCase updateAvionUseCase = new UpdateAvionUseCase(avionRepository);
+                    AvionController avionController = new AvionController(createAvionUseCase, updateAvionUseCase, deleteAvionUseCase, findAvionUseCase);
+
 
                     avionController.gestionAvion();
                     break;
                     
                 case 2: 
                 
+                    TrayectoRepository trayectoRepository = new TrayectoRepository();
+                    UpdateTrayectoUseCase updateTrayectoUseCase = new UpdateTrayectoUseCase(trayectoRepository);
+                    DeleteTrayectoUseCase deleteTrayectoUseCase = new DeleteTrayectoUseCase(trayectoRepository);
+                    FindTrayectoUseCase findTrayectoUseCase = new FindTrayectoUseCase(trayectoRepository);
+                    TrayectoController trayectoController = new TrayectoController(findTrayectoUseCase,updateTrayectoUseCase,deleteTrayectoUseCase); 
+                    
                     trayectoController.gestionTrayecto();
                     break;
                     
                 case 3: 
-                
+
+                    
+                    UpdateEscalaUseCase updateEscalaUseCase = new UpdateEscalaUseCase(escalaRepository);
+                    DeleteEscalaUseCase deleteEscalaUseCase = new DeleteEscalaUseCase(escalaRepository);
+                    AsignAvionUseCase asignAvionUseCase = new AsignAvionUseCase(escalaRepository);
+                    EscalaController escalaController = new EscalaController(findEscalaUseCase, updateEscalaUseCase, deleteEscalaUseCase, asignAvionUseCase);
+            
                     escalaController.gestionEscala();
                     break;
 
                 case 4:
                 
+                    TipoDocumentoRepository tipoDocumentoRepository=new TipoDocumentoRepository();
+                    CreateTipoDocumentoUseCase createTipoDocumentoUseCase=new CreateTipoDocumentoUseCase(tipoDocumentoRepository);
+                    UpdateTipoDocumentoUseCase updateTipoDocumentoUseCase=new UpdateTipoDocumentoUseCase(tipoDocumentoRepository);
+                    DeleteTipoDocumentoUseCase deleteTipoDocumentoUseCase=new DeleteTipoDocumentoUseCase(tipoDocumentoRepository);
+                    FindTipoDocumentoUseCase findTipoDocumentoUseCase=new FindTipoDocumentoUseCase(tipoDocumentoRepository);
+                    TipoDocumentoController tipoDocumentoController=new TipoDocumentoController(createTipoDocumentoUseCase, updateTipoDocumentoUseCase,deleteTipoDocumentoUseCase,findTipoDocumentoUseCase);
+       
                     tipoDocumentoController.gestionTipoDocumento();
                     break;
 
                 case 5:
 
+                    RevisionRepository revisionRepository = new RevisionRepository();
+                    CreateRevisionUseCase createRevisionUseCase = new CreateRevisionUseCase(revisionRepository);
+                    FindRevisionUseCase findRevisionUseCase = new FindRevisionUseCase(revisionRepository);
+                    UpdateRevisionUseCase updateRevisionUseCase = new UpdateRevisionUseCase(revisionRepository);
+                    DeleteRevisionUseCase deleteRevisionUseCase = new DeleteRevisionUseCase(revisionRepository);
+                    RevisionController revisionController = new RevisionController(createRevisionUseCase, updateRevisionUseCase, findRevisionUseCase, deleteRevisionUseCase);
+            
                     revisionController.gestionRevision();
                     break;
 
                 case 6:
+
+                    TripulacionRepository tripulacionRepository = new TripulacionRepository();
+                    CreateTripulacionUseCase createTripulacionUseCase = new CreateTripulacionUseCase(tripulacionRepository);
+                    FindTripulacionUseCase findTripulacionUseCase=new FindTripulacionUseCase(tripulacionRepository);
+                    TripulacionController tripulacionController = new TripulacionController(createTripulacionUseCase, findTripulacionUseCase);
 
                     tripulacionController.gestionTripulacion();
                     break;
@@ -208,26 +164,66 @@ public class Main {
 
                 case 7:
 
+                    ClienteRepository clienteRepository = new ClienteRepository();
+                    CreateClienteCase createClienteCase = new CreateClienteCase(clienteRepository);
+                    FindClienteCase findClienteCase = new FindClienteCase(clienteRepository);
+                    UpdateClienteCase updateClienteCase = new UpdateClienteCase(clienteRepository);
+                    DeleteClienteCase deleteClienteCase = new DeleteClienteCase(clienteRepository);
+                    ClienteController clienteController = new ClienteController(createClienteCase, findClienteCase, deleteClienteCase, updateClienteCase);
+
                     clienteController.gestionCliente();
                     break;
 
                 case 8:
 
+                    AeropuertoRepository aeropuertoRepository = new AeropuertoRepository();
+                    CreateAeropuertoCase createAeropuertoCase = new CreateAeropuertoCase(aeropuertoRepository);
+                    FindAeropuertoCase findAeropuertoCase = new FindAeropuertoCase(aeropuertoRepository);
+                    UpdateAeropuertoCase updateAeropuertoCase = new UpdateAeropuertoCase(aeropuertoRepository);
+                    DeleteAeropuertoCase deleteAeropuertoCase = new DeleteAeropuertoCase(aeropuertoRepository);
+                    AeropuertoController aeropuertoController = new AeropuertoController(createAeropuertoCase, findAeropuertoCase, deleteAeropuertoCase, updateAeropuertoCase);
+            
                     aeropuertoController.gestionAeropuerto();
                     break;
 
                 case 9:
-
+    
+                    CreateReservaAgenteUseCase createReservaAgenteUseCase=new CreateReservaAgenteUseCase(reservaRepository);
+                    FindReservaAgenteUseCase findReservaAgenteUseCase=new FindReservaAgenteUseCase(reservaRepository); 
+                    DeleteReservaAgenteUseCase deleteReservaAgenteUseCase=new DeleteReservaAgenteUseCase(reservaRepository);   
+                    CancelReservaClienteUseCase cancelReservaClienteUseCase=new  CancelReservaClienteUseCase(reservaRepository); 
+                    ReservaController reservaController= new ReservaController(createReservaAgenteUseCase,findReservaAgenteUseCase,
+                    deleteReservaAgenteUseCase,cancelReservaClienteUseCase, pagarValorReservaUseCase);
+            
                     reservaController.gestionReserva();
                     break;
 
                 case 10:
 
+                    TarifaRepository tarifaRepository = new TarifaRepository();
+                    CreateTarifaUseCase createTarifaUseCase = new CreateTarifaUseCase(tarifaRepository);
+                    FindTarifaUseCase findTarifaUseCase = new FindTarifaUseCase(tarifaRepository);
+                    DeleteTarifaUseCase deleteTarifaUseCase = new DeleteTarifaUseCase(tarifaRepository);
+                    UpdateTarifaUseCase updateTarifaUseCase = new UpdateTarifaUseCase(tarifaRepository);
+
+                    TarifaController tarifaController = new TarifaController(createTarifaUseCase, findTarifaUseCase, deleteTarifaUseCase, updateTarifaUseCase);
                     tarifaController.gestionTarifas();
                     break;
 
                 case 11:
 
+                
+                    vueloRepository vueloRepository = new vueloRepository();
+                    FindvueloUseCase findvueloUseCase = new FindvueloUseCase(vueloRepository);
+                    SearchVueloxCiudadUseCase searchVueloxCiudadUseCase = new SearchVueloxCiudadUseCase(vueloRepository);
+                    CreateReservaxClienteUseCase createReservaxClienteUseCase = new CreateReservaxClienteUseCase(vueloRepository);
+                    AddPasajeroUseCase addPasajeroUseCase = new AddPasajeroUseCase(vueloRepository);
+                    MostrarAsientoUseCase mostrarAsientoUseCase = new MostrarAsientoUseCase(vueloRepository);
+                    AsignarAsientoUseCase asignarAsientoUseCase = new AsignarAsientoUseCase(vueloRepository);
+                    PagarValorReservaUseCase pagarValorReservaUseCase = new PagarValorReservaUseCase(vueloRepository);
+
+                    vueloController vueloController = new vueloController(findvueloUseCase, searchVueloxCiudadUseCase, createReservaxClienteUseCase, addPasajeroUseCase, mostrarAsientoUseCase, asignarAsientoUseCase, findEscalaUseCase, pagarValorReservaUseCase);
+    
                     vueloController.gestionVuelo();
                     break;
 

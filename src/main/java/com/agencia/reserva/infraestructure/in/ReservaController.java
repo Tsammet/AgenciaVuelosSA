@@ -6,8 +6,8 @@ import com.agencia.reserva.application.CancelReservaClienteUseCase;
 import com.agencia.reserva.application.CreateReservaAgenteUseCase;
 import com.agencia.reserva.application.DeleteReservaAgenteUseCase;
 import com.agencia.reserva.application.FindReservaAgenteUseCase;
-import com.agencia.reserva.application.PagarValorReservaUseCase;
 import com.agencia.reserva.domain.entity.Reserva;
+import com.agencia.vuelo.application.PagarValorReservaUseCase;
 
 public class ReservaController {
     private final CreateReservaAgenteUseCase createReservaAgenteUseCase;
