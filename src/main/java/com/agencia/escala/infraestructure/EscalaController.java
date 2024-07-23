@@ -10,15 +10,14 @@ import com.agencia.escala.application.FindEscalaUseCase;
 import com.agencia.escala.application.UpdateEscalaUseCase;
 import com.agencia.escala.domain.entity.Escala;
 
-
-
 public class EscalaController {
     private final FindEscalaUseCase findEscalaUseCase;
     private final UpdateEscalaUseCase updateEscalaUseCase;
     private final DeleteEscalaUseCase deleteEscalaUseCase;
     private final AsignAvionUseCase asignAvionUseCase;
 
-    public EscalaController(FindEscalaUseCase findEscalaUseCase, UpdateEscalaUseCase updateEscalaUseCase, DeleteEscalaUseCase deleteEscalaUseCase, AsignAvionUseCase asignAvionUseCase) {
+    public EscalaController(FindEscalaUseCase findEscalaUseCase, UpdateEscalaUseCase updateEscalaUseCase,
+            DeleteEscalaUseCase deleteEscalaUseCase, AsignAvionUseCase asignAvionUseCase) {
         this.findEscalaUseCase = findEscalaUseCase;
         this.updateEscalaUseCase = updateEscalaUseCase;
         this.deleteEscalaUseCase = deleteEscalaUseCase;
@@ -34,8 +33,7 @@ public class EscalaController {
             System.out.println("2. Actualizar Escala: ");
             System.out.println("3. Eliminar Escala: ");
             System.out.println("4. Asignar Avión a escala: ");
-
-            System.out.println("4. Salir: ");
+            System.out.println("5. Salir: ");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -62,6 +60,7 @@ public class EscalaController {
                 case 4:
 
                     asignAvion();
+                    break;
 
                 case 5:
                     System.out.println("Saliendo...");
@@ -76,31 +75,29 @@ public class EscalaController {
 
     }
 
-   public void findEscalas() {
-    System.out.println("¿Cuál es el id del trayecto del cual desea consultar las escalas?");
-    int idViaje = scanner.nextInt();
-    scanner.nextLine();
-    List<Escala> escalas= new ArrayList<>();
-    escalas = findEscalaUseCase.execute(idViaje); // Asumiendo que devuelve una lista de escalas
+    public void findEscalas() {
+        System.out.println("¿Cuál es el id del trayecto del cual desea consultar las escalas?");
+        int idViaje = scanner.nextInt();
+        scanner.nextLine();
+        List<Escala> escalas = new ArrayList<>();
+        escalas = findEscalaUseCase.execute(idViaje);
+        if (!escalas.isEmpty()) {
+            System.out.println(escalas);
 
-    if (!escalas.isEmpty()) {
-        System.out.println(escalas);
-        // escalas.forEach(escala -> System.out.println(escala.getId()));
-
-        for (Escala escala : escalas) {
-            System.out.println("Escala id: " + escala.getId());
-            System.out.println("Número de conexión: " + escala.getNumeroConexion());
-            System.out.println("Id trayecto: " + escala.getIdViaje());
-            System.out.println("Id Avión: " + escala.getIdAvion());
-            System.out.println("Id aeropuerto origen: " + escala.getIdAeropuertoOrigen());
-            System.out.println("Id aeropuerto destino: " + escala.getIdAeropuertoDestino());
-            System.out.println("------------"); 
+            for (Escala escala : escalas) {
+                System.out.println("-------------------------------------------");
+                System.out.println("Escala id: " + escala.getId());
+                System.out.println("Número de conexión: " + escala.getNumeroConexion());
+                System.out.println("Id trayecto: " + escala.getIdViaje());
+                System.out.println("Id Avión: " + escala.getIdAvion());
+                System.out.println("Id aeropuerto origen: " + escala.getIdAeropuertoOrigen());
+                System.out.println("Id aeropuerto destino: " + escala.getIdAeropuertoDestino());
+                System.out.println("-------------------------------------------");
+            }
+        } else {
+            System.out.println("No se encontraron escalas para el id de viaje proporcionado.");
         }
-    } else {
-        System.out.println("No se encontraron escalas para el id de viaje proporcionado.");
     }
-}
-
 
     public void updateEscala() {
 
@@ -129,7 +126,7 @@ public class EscalaController {
 
     }
 
-    public void deleteEscala(){
+    public void deleteEscala() {
         System.out.println("Ingrese el id de la escala que desea eliminar: ");
         int deleteEscala = scanner.nextInt();
         scanner.nextLine();
@@ -137,14 +134,14 @@ public class EscalaController {
         // User userD = new User();
         deleteEscalaUseCase.execute(deleteEscala);
 
-        if(deleteEscalaUseCase != null){
+        if (deleteEscalaUseCase != null) {
             System.out.println("Escala eliminada");
-        }else{
+        } else {
             System.out.println("No eliminada");
         }
     }
 
-    public void asignAvion(){
+    public void asignAvion() {
 
         System.out.println("Ingrese el id de la escala a la cual le deseas asignar un avión: ");
         int idEscalaAvion = scanner.nextInt();
@@ -161,9 +158,6 @@ public class EscalaController {
 
         asignAvionUseCase.execute(escala);
 
-        System.out.println("Avión asignado <3");
-
     }
 
 }
-

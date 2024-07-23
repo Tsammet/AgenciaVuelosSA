@@ -57,6 +57,10 @@ public class RevisionController{
                 case 4:
                     updateRevision();
                     break;
+
+                case 5:
+                System.out.println("Saliendo...");
+                return;
             }
         }
     }
@@ -70,7 +74,7 @@ public class RevisionController{
         int idAvion = scanner.nextInt();
         scanner.nextLine(); // Consumir el salto de línea después de nextInt
         
-        System.out.print("Ingrese la descripción de la revisión ");
+        System.out.print("Ingrese la descripción de la revisión: ");
         String descripcion = scanner.nextLine();
         
         System.out.print("Ingrese el id del empleado: ");
@@ -98,15 +102,16 @@ public class RevisionController{
         Revision foundRevision = findRevisionUseCase.execute(idRevision);
 
         if(foundRevision != null){
+            System.out.println("-------------------------------------");
             System.out.println("Revision id: " + foundRevision.getId());
             System.out.println("Fecha revisión: " + foundRevision.getFechaRevision());
             System.out.println("ID Avión: " + foundRevision.getIdAvion());
             System.out.println("Descripción de la revisión: " + foundRevision.getDescripcion());
             System.out.println("ID empleado encargado: " + foundRevision.getIdEmpleado());
-           
+            System.out.println("-------------------------------------");
         }
         else{
-            System.out.println("Revisión no encontrada c:");
+            System.out.println("Revisión no encontrada.");
         }
 
     }
@@ -115,7 +120,7 @@ public class RevisionController{
     public void updateRevision(){
 
 
-        System.out.println("Ingrese el id de la revisión que desea actualizar: ");
+        System.out.println("Ingrese el ID de la revisión que desea actualizar: ");
         int revisionUpdate = scanner.nextInt();
         scanner.nextLine();
 

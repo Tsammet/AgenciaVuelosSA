@@ -81,7 +81,7 @@ public class EscalaRepository implements EscalaService {
             ps.setInt(4, escala.getId());
             ps.executeUpdate();
 
-            System.out.println("<3");
+            System.out.println("Escala actualizada correctamente. ");
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -118,7 +118,7 @@ public class EscalaRepository implements EscalaService {
 
             ps.executeUpdate();
 
-            System.out.println("Avión asignado ");
+            System.out.println("Avión asignado correctamente");
         }catch(SQLException e ){
             e.printStackTrace();
         }

@@ -75,7 +75,7 @@ public class TrayectoRepository implements TrayectoService{
 
             ps.executeUpdate();
 
-            System.out.println("Actualizado");
+            System.out.println("Trayecto actualizado correctamente. ");
         }catch(SQLException e){
             e.printStackTrace();
         }

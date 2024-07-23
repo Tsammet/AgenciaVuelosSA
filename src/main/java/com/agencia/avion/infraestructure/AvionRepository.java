@@ -83,7 +83,7 @@ public class AvionRepository implements AvionService{
 
             ps.executeUpdate();
 
-            System.out.println("Avión actualizado correctamente");
+            System.out.println("Avión actualizado correctamente. ");
         }catch (SQLException e) {
             e.printStackTrace();
 

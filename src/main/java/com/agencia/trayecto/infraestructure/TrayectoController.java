@@ -2,6 +2,8 @@ package com.agencia.trayecto.infraestructure;
 
 import java.util.Scanner;
 
+import javax.sound.midi.Soundbank;
+
 import com.agencia.trayecto.application.DeleteTrayectoUseCase;
 import com.agencia.trayecto.application.FindTrayectoUseCase;
 import com.agencia.trayecto.application.UpdateTrayectoUseCase;
@@ -29,7 +31,7 @@ public class TrayectoController {
             System.out.println("1. Encontrar trayecto: ");
             System.out.println("2. Actualizar trayecto: ");
             System.out.println("3. Eliminar Trayecto");
-            System.out.println("3. Salir: ");
+            System.out.println("4. Salir: ");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -44,10 +46,12 @@ public class TrayectoController {
                 case 2:
 
                     updateTrayecto();
+                    break;
 
                 case 3:
 
                     deleteTrayecto();
+                    break;
 
                 case 4: 
 
@@ -70,13 +74,15 @@ public class TrayectoController {
         Trayecto foundTrayecto = findTrayectoUseCase.execute(idTrayecto);
 
         if(foundTrayecto != null){
+            System.out.println("--------------------------------------------");
             System.out.println("Trayecto id: " + foundTrayecto.getId());
             System.out.println("Trayecto fecha viaje: " + foundTrayecto.getFechaViaje());
             System.out.println("Precio viaje trayecto: " + foundTrayecto.getPrecioViaje());
             System.out.println("Aeropuerto Origen Trayecto: " + foundTrayecto.getIdOrigenAeropuerto());
             System.out.println("Aeropuerto Destino Trayecto: " + foundTrayecto.getIdDestinoAeropuerto());
+            System.out.println("--------------------------------------------");
         }else{
-            System.out.println("Trayecto no encontrado :c");
+            System.out.println("Trayecto no encontrado.");
         }
 
     }
@@ -120,9 +126,9 @@ public class TrayectoController {
         deleteTrayectoUseCase.execute(deleteTrayecto);
 
         if (deleteTrayectoUseCase != null) {
-            System.out.println("Eliminado");
+            System.out.println("Trayecto eliminado");
         }else{
-            System.out.println("No eliminado");
+            System.out.println("Trayecto no encontrado. ");
         }
     }
 

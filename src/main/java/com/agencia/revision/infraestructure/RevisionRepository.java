@@ -119,7 +119,7 @@ public class RevisionRepository implements RevisionService{
 
             ps.executeUpdate();
 
-            System.out.println("Revisión actualizada con éxito");
+            System.out.println("Revisión actualizada con éxito. ");
         }catch (SQLException e) {
             e.printStackTrace();
 

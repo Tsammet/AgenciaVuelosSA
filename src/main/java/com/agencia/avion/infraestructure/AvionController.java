@@ -64,6 +64,9 @@ public class AvionController {
 
                     break;
 
+                case 5:
+                    return;
+
                 
             
                 default:
@@ -108,7 +111,7 @@ public class AvionController {
             avion.setIdAerolinea(idAerolinea);
             
             createAvionUseCase.execute(avion);
-            System.out.println("Avión creado correctamente :D");
+            System.out.println("Avión creado correctamente. ");
     
 
         
@@ -123,7 +126,7 @@ public class AvionController {
         deleteAvionUseCase.execute(deleteAvion);
 
         if(deleteAvionUseCase != null){
-            System.out.println("Eliminado");
+            System.out.println("Avión eliminado correctamente. ");
         }else{
             System.out.println("No eliminado");
         }
@@ -180,6 +183,7 @@ public class AvionController {
         Avion foundAvion = findAvionUseCase.execute(idAvion);
 
         if(foundAvion != null){
+            System.out.println("-------------------------------------");
             System.out.println("Avion id: " + foundAvion.getId());
             System.out.println("Avion Matricula: " + foundAvion.getMatricula());
             System.out.println("Avion Capacidad: " + foundAvion.getCapacidad());
@@ -187,9 +191,10 @@ public class AvionController {
             System.out.println("Avion id Estado: " + foundAvion.getIdEstado());
             System.out.println("Avion id Modelo: " + foundAvion.getIdModelo());
             System.out.println("Avion id Aerolínea: " + foundAvion.getIdAerolinea());
+            System.out.println("-------------------------------------");
         }
         else{
-            System.out.println("Avión no encontrado c:");
+            System.out.println("Avión no encontrado.");
         }
 
     }

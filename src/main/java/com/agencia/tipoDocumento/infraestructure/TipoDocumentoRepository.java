@@ -42,7 +42,7 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
             ps.setString(1,tipoDocumento.getNombre());
 
             ps.executeUpdate();
-            System.out.println("Tipo documento creado con exito!!");
+            System.out.println("Tipo documento creado con exito.");
 
             try (ResultSet generatedkeys=ps.getGeneratedKeys()){
                 if (generatedkeys.next()) {
@@ -82,6 +82,7 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
         try (PreparedStatement ps=connection.prepareStatement(query)){
             ps.setInt(1,tipoDocumento.getId());
             ps.executeUpdate();
+            System.out.println("Tipo documento eliminado con éxito. ");
         }
         catch(SQLException e){
             e.printStackTrace();
