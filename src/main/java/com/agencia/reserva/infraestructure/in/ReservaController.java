@@ -14,16 +14,16 @@ public class ReservaController {
     private final FindReservaAgenteUseCase findReservaAgenteUseCase;
     private final DeleteReservaAgenteUseCase deleteReservaAgenteUseCase;
     private final CancelReservaClienteUseCase cancelReservaClienteUseCase;
-    private final PagarValorReservaUseCase pagarValorReservaUseCase;
+   
 
     public ReservaController(CreateReservaAgenteUseCase createReservaAgenteUseCase,
             FindReservaAgenteUseCase findReservaAgenteUseCase, DeleteReservaAgenteUseCase deleteReservaAgenteUseCase,
-            CancelReservaClienteUseCase cancelReservaClienteUseCase, PagarValorReservaUseCase pagarValorReservaUseCase) {
+            CancelReservaClienteUseCase cancelReservaClienteUseCase) {
         this.createReservaAgenteUseCase = createReservaAgenteUseCase;
         this.findReservaAgenteUseCase = findReservaAgenteUseCase;
         this.deleteReservaAgenteUseCase = deleteReservaAgenteUseCase;
         this.cancelReservaClienteUseCase = cancelReservaClienteUseCase;
-        this.pagarValorReservaUseCase = pagarValorReservaUseCase;
+      
 
     }
 
@@ -34,9 +34,8 @@ public class ReservaController {
             System.out.println("1. Crear Reserva");
             System.out.println("2. Consultar reserva");
             System.out.println("3. Eliminar reserva");
-            System.out.println("4. Realizar pago de la reserva");
-            System.out.println("5. Cancelar reserva");
-            System.out.println("6. Salir");
+            System.out.println("4. Cancelar reserva");
+            System.out.println("5. Salir");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -53,14 +52,10 @@ public class ReservaController {
                     break;
 
                 case 4:
-                    pagarReserva();
-                    break;
-
-                case 5:
                     cancelarReserva();
                     break;
 
-                case 6:
+                case 5:
                     return;
 
                 default:
@@ -155,30 +150,5 @@ public class ReservaController {
         }
 
     }
-    public void pagarReserva(){
-        System.out.println("Ingrese el id de la reserva que desea pagar: ");
-        int reservaPagar = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("Ingrese el método de pago que va a utilizar (TD=Tarjeta Debito / TC=Tarjeta Credito): ");
-        String metodoPago = scanner.nextLine();
-
-        System.out.println("Ingrese el número de la tarjeta: ");
-        int numeroTarjeta = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("Ingrese el código de confirmacion CVC: ");
-        int codigoPago = scanner.nextInt();
-        scanner.nextLine();
-
-        
-
-        Reserva pagoReserva = new Reserva();
-
-        pagoReserva.setId(reservaPagar);
-        pagoReserva.setMetodoPago(metodoPago);
-
-        pagarValorReservaUseCase.execute(pagoReserva);
-
-    }
+    
 }

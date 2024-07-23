@@ -193,7 +193,7 @@ public class Main {
                     DeleteReservaAgenteUseCase deleteReservaAgenteUseCase=new DeleteReservaAgenteUseCase(reservaRepository);   
                     CancelReservaClienteUseCase cancelReservaClienteUseCase=new  CancelReservaClienteUseCase(reservaRepository); 
                     ReservaController reservaController= new ReservaController(createReservaAgenteUseCase,findReservaAgenteUseCase,
-                    deleteReservaAgenteUseCase,cancelReservaClienteUseCase, pagarValorReservaUseCase);
+                    deleteReservaAgenteUseCase,cancelReservaClienteUseCase);
             
                     reservaController.gestionReserva();
                     break;

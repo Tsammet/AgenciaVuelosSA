@@ -1,8 +1,7 @@
 package com.agencia.vuelo.application;
 
-import com.agencia.vuelo.domain.entity.Vuelos;
+import com.agencia.reserva.domain.entity.Reserva;
 import com.agencia.vuelo.domain.service.vueloService;
-import com.agencia.vuelo.infraestructure.vueloRepository;
 
 public class PagarValorReservaUseCase {
 
@@ -12,8 +11,8 @@ public class PagarValorReservaUseCase {
         this.vueloService = vueloService;
     }
 
-    public void execute(Vuelos vuelo){
-        vueloService.pagarReserva(vuelo);
+    public void execute(Reserva reserva){
+        vueloService.pagarReserva(reserva);
     }
 
 }

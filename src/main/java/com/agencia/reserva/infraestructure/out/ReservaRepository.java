@@ -134,18 +134,5 @@ public class ReservaRepository implements ReservaService {
 
     }
 
-    @Override
-    public void pagarReserva(Reserva reserva) {
-        String query = "UPDATE  reservaviaje SET estado=? WHERE id=?";
-        try (PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setInt(2, reserva.getId());
-            ps.setString(1, "Confirmada");
-            ps.executeUpdate();
-            System.out.println("Reserva pagada con exito");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 }

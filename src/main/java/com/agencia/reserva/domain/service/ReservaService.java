@@ -7,6 +7,5 @@ public interface ReservaService {
     void deleteReservaAgente (Reserva reserva);
     Reserva findReservaAgente(int id);
     void cancelReservaCliente (Reserva reserva);
-    void pagarReserva (Reserva reserva);
 
 }
