@@ -54,7 +54,7 @@ public class TarifaController {
 
             case 3:
 
-                buscar();
+                buscarTarifa();
 
                 break;
 
@@ -96,7 +96,7 @@ public class TarifaController {
 
     }
 
-    public void buscar(){
+    public void buscarTarifa(){
 
         System.out.println("Ingrese el id de la tarifa que desea buscar ");
         int idTarifa = scanner.nextInt();

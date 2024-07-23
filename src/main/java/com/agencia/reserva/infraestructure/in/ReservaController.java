@@ -29,40 +29,78 @@ public class ReservaController {
 
     Scanner scanner = new Scanner(System.in);
 
-    public void gestionReserva() {
+    public void gestionReservaCliente() {
         while (true) {
-            System.out.println("1. Crear Reserva");
-            System.out.println("2. Consultar reserva");
-            System.out.println("3. Eliminar reserva");
-            System.out.println("4. Cancelar reserva");
-            System.out.println("5. Salir");
+            System.out.println("1. Consultar reserva");
+            System.out.println("2. Cancelar reserva");
+            System.out.println("3. Salir");
+            
 
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcion) {
                 case 1:
-                    createReserva();
-                    break;
-                case 2:
+
                     findReservaAgente();
                     break;
-                case 3:
-                    deleteReservaAgente();
-                    break;
 
-                case 4:
+                case 2:
                     cancelarReserva();
                     break;
-
-                case 5:
+            
+                case 3:
                     return;
 
                 default:
+                    System.out.println("opción no valida");
                     break;
             }
 
         }
+    }
+
+    public void gestionReservaAgenteVentas(){
+
+        while (true) {
+            System.out.println("1. Crear Reserva");
+            System.out.println("2. Eliminar reserva");
+            System.out.println("3. Consultar reserva");
+            System.out.println("4. Salir");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    
+                    createReserva();
+
+                    break;
+                
+                case 2:
+
+                    deleteReservaAgente();
+
+                    break;
+
+
+                case 3:
+
+                    findReservaAgente();
+
+                    break;
+
+                case 4:
+
+                    return;
+
+                default:
+                    System.out.println("opción no valida");
+                    break;
+            }
+
+        }
+
     }
 
     public void createReserva() {

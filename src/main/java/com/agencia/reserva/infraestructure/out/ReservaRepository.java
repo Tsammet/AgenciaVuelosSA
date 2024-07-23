@@ -92,7 +92,7 @@ public class ReservaRepository implements ReservaService {
 
     @Override
     public Reserva findReservaAgente(int id) {
-        String query = "SELECT rv.id, rv.fecha, rv.idclientes, cl.nombre, v.idorigenaeropuerto, v.iddestionaeropuerto, "
+        String query = "SELECT rv.id, rv.fecha, rv.idclientes, cl.nombre, v.idorigenaeropuerto, v.iddestinoaeropuerto, "
                 +
                 " tv.valor, rv.estado FROM reservaviaje as rv INNER JOIN detallesreservaviaje as drv " +
                 "ON rv.id = drv.idreserva INNER JOIN tarifasvuelos as tv ON drv.idtarifa = tv.id " +
@@ -108,7 +108,7 @@ public class ReservaRepository implements ReservaService {
                     reserva.setFechaReserva(rs.getString("rv.fecha"));
                     reserva.setPrecio(rs.getInt("tv.valor"));
                     reserva.setAeropuertoOrigen(rs.getString("v.idorigenaeropuerto"));
-                    reserva.setAeropuertoDestino(rs.getString("v.iddestionaeropuerto"));
+                    reserva.setAeropuertoDestino(rs.getString("v.iddestinoaeropuerto"));
                     reserva.setNombreCliente(rs.getString("cl.nombre"));
                     reserva.setEstado(rs.getString("rv.estado"));
                 }

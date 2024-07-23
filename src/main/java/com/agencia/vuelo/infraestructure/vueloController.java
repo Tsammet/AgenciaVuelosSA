@@ -49,10 +49,10 @@ public class vueloController {
 
     Scanner scanner = new Scanner(System.in);
 
-    public void gestionVuelo(){
+    public void gestionVueloCliente(){
 
         while (true) {
-            System.out.println("1.Encontrar Vuelo: ");
+            System.out.println("1. Consultar Vuelo: ");
             System.out.println("2. Buscar Vuelo");
             System.out.println("3. Salir: ");
 
@@ -80,6 +80,35 @@ public class vueloController {
             }
         }
     }
+
+    public void gestionVueloAdminAgente(){
+
+        while (true) {
+            System.out.println("1. Consultar Vuelo: ");
+            System.out.println("2. Salir: ");
+
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcion) {
+                case 1:
+
+                    findVuelo();
+                    
+                    break;
+            
+                case 2: 
+
+                    return;
+                
+                default:
+                    break;
+            }
+        }
+    }
+
+
+
 
     public void findVuelo(){
 

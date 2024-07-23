@@ -82,6 +82,8 @@ public class UsuarioController {
     }
 
     public void validarUsuario() {
+
+   
         System.out.println("Ingrese el usuario: ");
         String usuario = scanner.nextLine();
 
@@ -99,34 +101,106 @@ public class UsuarioController {
         if (usuarioValidado != null) {
             switch (usuarioValidado.getIdrol()) {
                 case 1:
-                    // Acciones para el rol 1 (cliente)
-                    System.out.println("Bienvenido Cliente: " + usuarioValidado.getUsuario());
-                    // Aquí puedes llamar a métodos específicos para clientes
-                    break;
+
+                    System.out.println("Bienvenido Cliente, " + usuarioValidado.getUsuario());
+                
+                    while (true) {
+                        System.out.println("   ");
+                        System.out.println("███╗   ███╗███████╗███╗   ██╗██╗   ██╗     ██████╗██╗     ██╗███████╗███╗   ██╗████████╗███████╗███████╗\n" + //
+                                                        "████╗ ████║██╔════╝████╗  ██║██║   ██║    ██╔════╝██║     ██║██╔════╝████╗  ██║╚══██╔══╝██╔════╝██╔════╝\n" + //
+                                                        "██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║    ██║     ██║     ██║█████╗  ██╔██╗ ██║   ██║   █████╗  ███████╗\n" + //
+                                                        "██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║    ██║     ██║     ██║██╔══╝  ██║╚██╗██║   ██║   ██╔══╝  ╚════██║\n" + //
+                                                        "██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝    ╚██████╗███████╗██║███████╗██║ ╚████║   ██║   ███████╗███████║\n" + //
+                                                        "╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝      ╚═════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝");
+                        
+                        System.out.println("1. Gestion de reservas");
+                        System.out.println("2. Gestion de Vuelos");
+                        System.out.println("3. Salir");
+                        
+                        
+                        int opcion = scanner.nextInt();
+                        scanner.nextLine(); // Consumir el salto de línea después de nextInt
+                        
+                        
+                        switch (opcion) {
+                            
+                            case 1:
+                            
+                                    ReservaRepository reservaRepository=new ReservaRepository();
+                                    CreateReservaAgenteUseCase createReservaAgenteUseCase=new CreateReservaAgenteUseCase(reservaRepository);
+                                    FindReservaAgenteUseCase findReservaAgenteUseCase=new FindReservaAgenteUseCase(reservaRepository); 
+                                    DeleteReservaAgenteUseCase deleteReservaAgenteUseCase=new DeleteReservaAgenteUseCase(reservaRepository);   
+                                    CancelReservaClienteUseCase cancelReservaClienteUseCase=new  CancelReservaClienteUseCase(reservaRepository); 
+                                    ReservaController reservaController= new ReservaController(createReservaAgenteUseCase,findReservaAgenteUseCase,
+                                    deleteReservaAgenteUseCase,cancelReservaClienteUseCase);
+                                    
+                                    reservaController.gestionReservaCliente();
+
+                                break;
+
+                                case 2:
+
+                                    EscalaRepository escalaRepository = new EscalaRepository();
+                                    FindEscalaUseCase findEscalaUseCase = new FindEscalaUseCase(escalaRepository);
+                         
+                                    vueloRepository vueloRepository = new vueloRepository();
+                                    FindvueloUseCase findvueloUseCase = new FindvueloUseCase(vueloRepository);
+                                    SearchVueloxCiudadUseCase searchVueloxCiudadUseCase = new SearchVueloxCiudadUseCase(vueloRepository);
+                                    CreateReservaxClienteUseCase createReservaxClienteUseCase = new CreateReservaxClienteUseCase(vueloRepository);
+                                    AddPasajeroUseCase addPasajeroUseCase = new AddPasajeroUseCase(vueloRepository);
+                                    MostrarAsientoUseCase mostrarAsientoUseCase = new MostrarAsientoUseCase(vueloRepository);
+                                    AsignarAsientoUseCase asignarAsientoUseCase = new AsignarAsientoUseCase(vueloRepository);
+                                    PagarValorReservaUseCase pagarValorReservaUseCase = new PagarValorReservaUseCase(vueloRepository);
+    
+                                    vueloController vueloController = new vueloController(findvueloUseCase, searchVueloxCiudadUseCase, createReservaxClienteUseCase, addPasajeroUseCase, mostrarAsientoUseCase, asignarAsientoUseCase, findEscalaUseCase, pagarValorReservaUseCase);
+                    
+                                    vueloController.gestionVueloCliente();
+                                    break;
+
+                                case 3:
+
+                                    System.out.println("Saliendo ...");
+                                    return;
+                            
+                                default:
+                                    System.out.println("Opción no valida");
+                                    break;
+                            }
+
+                        }
 
                 case 2:
-                    // Acciones para el rol 2 (administrador)
                     System.out.println("Bienvenido Administrador: " + usuarioValidado.getUsuario());
-                    // Aquí puedes llamar a métodos específicos para administradores
                                                     
                     while (true) {
-                        ReservaRepository reservaRepository=new ReservaRepository();
                         EscalaRepository escalaRepository = new EscalaRepository();
                         FindEscalaUseCase findEscalaUseCase = new FindEscalaUseCase(escalaRepository);
-
-                        
+                        System.out.println("███╗   ███╗███████╗███╗   ██╗██╗   ██╗                                                               \n" + //
+                                                        "████╗ ████║██╔════╝████╗  ██║██║   ██║                                                               \n" + //
+                                                        "██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║                                                               \n" + //
+                                                        "██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║                                                               \n" + //
+                                                        "██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝                                                               \n" + //
+                                                        "╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝                                                                \n" + //
+                                                        "                                                                                                     \n" + //
+                                                        " █████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗██╗███████╗████████╗██████╗  █████╗ ██████╗  ██████╗ ██████╗ \n" + //
+                                                        "██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║██║██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██╔══██╗\n" + //
+                                                        "███████║██║  ██║██╔████╔██║██║██╔██╗ ██║██║███████╗   ██║   ██████╔╝███████║██║  ██║██║   ██║██████╔╝\n" + //
+                                                        "██╔══██║██║  ██║██║╚██╔╝██║██║██║╚██╗██║██║╚════██║   ██║   ██╔══██╗██╔══██║██║  ██║██║   ██║██╔══██╗\n" + //
+                                                        "██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║██║███████║   ██║   ██║  ██║██║  ██║██████╔╝╚██████╔╝██║  ██║\n" + //
+                                                        "╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝");
+                        System.out.println(" ");
                         System.out.println("1. Gestion Avión");
                         System.out.println("2. Gestion Trayectos");
-                        System.out.println("3. Gestion Escalas");
-                        System.out.println("4. Gestión tipo documento");
-                        System.out.println("5. Gestión revisión de mantenimiento de aviones");
-                        System.out.println("6. Gestion de tripulantes");
-                        System.out.println("7. Gestion de clientes");
-                        System.out.println("8. Gestion de aeropuertos");
-                        System.out.println("9. Gestion de reservas");
-                        System.out.println("10. Gestion de Tarifas");
-                        System.out.println("11. Gestion de Vuelos");
-                        System.out.println("12. Salir");
+                        System.out.println("3. Gestion de Aeropuertos");
+                        System.out.println("4. Gestion de Tripulación");
+                        System.out.println("5. Gestion Escalas");
+                        System.out.println("6. Gestion de Tarifas");
+                        System.out.println("7. Gestión tipo documento");
+                        System.out.println("8. Gestión Vuelo");
+                        System.out.println("9. Salir");
+                        System.out.println(" ");
+
+                        System.out.println("Ingrese su opcion: ");
 
                         int opcion = scanner.nextInt();
                         scanner.nextLine(); // Consumir el salto de línea después de nextInt
@@ -139,8 +213,6 @@ public class UsuarioController {
                                 DeleteAvionUseCase deleteAvionUseCase = new DeleteAvionUseCase(avionRepository);
                                 UpdateAvionUseCase updateAvionUseCase = new UpdateAvionUseCase(avionRepository);
                                 AvionController avionController = new AvionController(createAvionUseCase, updateAvionUseCase, deleteAvionUseCase, findAvionUseCase);
-
-
                                 avionController.gestionAvion();
                                 break;
                                 
@@ -154,43 +226,20 @@ public class UsuarioController {
                                 
                                 trayectoController.gestionTrayecto();
                                 break;
-                                
-                            case 3: 
-
-                                
-                                UpdateEscalaUseCase updateEscalaUseCase = new UpdateEscalaUseCase(escalaRepository);
-                                DeleteEscalaUseCase deleteEscalaUseCase = new DeleteEscalaUseCase(escalaRepository);
-                                AsignAvionUseCase asignAvionUseCase = new AsignAvionUseCase(escalaRepository);
-                                EscalaController escalaController = new EscalaController(findEscalaUseCase, updateEscalaUseCase, deleteEscalaUseCase, asignAvionUseCase);
-                        
-                                escalaController.gestionEscala();
-                                break;
-
-                            case 4:
                             
-                                TipoDocumentoRepository tipoDocumentoRepository=new TipoDocumentoRepository();
-                                CreateTipoDocumentoUseCase createTipoDocumentoUseCase=new CreateTipoDocumentoUseCase(tipoDocumentoRepository);
-                                UpdateTipoDocumentoUseCase updateTipoDocumentoUseCase=new UpdateTipoDocumentoUseCase(tipoDocumentoRepository);
-                                DeleteTipoDocumentoUseCase deleteTipoDocumentoUseCase=new DeleteTipoDocumentoUseCase(tipoDocumentoRepository);
-                                FindTipoDocumentoUseCase findTipoDocumentoUseCase=new FindTipoDocumentoUseCase(tipoDocumentoRepository);
-                                TipoDocumentoController tipoDocumentoController=new TipoDocumentoController(createTipoDocumentoUseCase, updateTipoDocumentoUseCase,deleteTipoDocumentoUseCase,findTipoDocumentoUseCase);
-                
-                                tipoDocumentoController.gestionTipoDocumento();
+                            case 3:
+                                
+                                AeropuertoRepository aeropuertoRepository = new AeropuertoRepository();
+                                CreateAeropuertoCase createAeropuertoCase = new CreateAeropuertoCase(aeropuertoRepository);
+                                FindAeropuertoCase findAeropuertoCase = new FindAeropuertoCase(aeropuertoRepository);
+                                UpdateAeropuertoCase updateAeropuertoCase = new UpdateAeropuertoCase(aeropuertoRepository);
+                                DeleteAeropuertoCase deleteAeropuertoCase = new DeleteAeropuertoCase(aeropuertoRepository);
+                                AeropuertoController aeropuertoController = new AeropuertoController(createAeropuertoCase, findAeropuertoCase, deleteAeropuertoCase, updateAeropuertoCase);
+                                
+                                aeropuertoController.gestionAeropuerto();
                                 break;
-
-                            case 5:
-
-                                RevisionRepository revisionRepository = new RevisionRepository();
-                                CreateRevisionUseCase createRevisionUseCase = new CreateRevisionUseCase(revisionRepository);
-                                FindRevisionUseCase findRevisionUseCase = new FindRevisionUseCase(revisionRepository);
-                                UpdateRevisionUseCase updateRevisionUseCase = new UpdateRevisionUseCase(revisionRepository);
-                                DeleteRevisionUseCase deleteRevisionUseCase = new DeleteRevisionUseCase(revisionRepository);
-                                RevisionController revisionController = new RevisionController(createRevisionUseCase, updateRevisionUseCase, findRevisionUseCase, deleteRevisionUseCase);
-                        
-                                revisionController.gestionRevision();
-                                break;
-
-                            case 6:
+                            
+                            case 4:
 
                                 TripulacionRepository tripulacionRepository = new TripulacionRepository();
                                 CreateTripulacionUseCase createTripulacionUseCase = new CreateTripulacionUseCase(tripulacionRepository);
@@ -200,44 +249,19 @@ public class UsuarioController {
                                 tripulacionController.gestionTripulacion();
                                 break;
 
+                            case 5: 
 
-                            case 7:
-
-                                ClienteRepository clienteRepository = new ClienteRepository();
-                                CreateClienteCase createClienteCase = new CreateClienteCase(clienteRepository);
-                                FindClienteCase findClienteCase = new FindClienteCase(clienteRepository);
-                                UpdateClienteCase updateClienteCase = new UpdateClienteCase(clienteRepository);
-                                DeleteClienteCase deleteClienteCase = new DeleteClienteCase(clienteRepository);
-                                ClienteController clienteController = new ClienteController(createClienteCase, findClienteCase, deleteClienteCase, updateClienteCase);
-
-                                clienteController.gestionCliente();
-                                break;
-
-                            case 8:
-
-                                AeropuertoRepository aeropuertoRepository = new AeropuertoRepository();
-                                CreateAeropuertoCase createAeropuertoCase = new CreateAeropuertoCase(aeropuertoRepository);
-                                FindAeropuertoCase findAeropuertoCase = new FindAeropuertoCase(aeropuertoRepository);
-                                UpdateAeropuertoCase updateAeropuertoCase = new UpdateAeropuertoCase(aeropuertoRepository);
-                                DeleteAeropuertoCase deleteAeropuertoCase = new DeleteAeropuertoCase(aeropuertoRepository);
-                                AeropuertoController aeropuertoController = new AeropuertoController(createAeropuertoCase, findAeropuertoCase, deleteAeropuertoCase, updateAeropuertoCase);
+                                
+                                UpdateEscalaUseCase updateEscalaUseCase = new UpdateEscalaUseCase(escalaRepository);
+                                DeleteEscalaUseCase deleteEscalaUseCase = new DeleteEscalaUseCase(escalaRepository);
+                                AsignAvionUseCase asignAvionUseCase = new AsignAvionUseCase(escalaRepository);
+                                EscalaController escalaController = new EscalaController(findEscalaUseCase, updateEscalaUseCase, deleteEscalaUseCase, asignAvionUseCase);
                         
-                                aeropuertoController.gestionAeropuerto();
-                                break;
+                                escalaController.gestionEscala();
 
-                            case 9:
-                
-                                CreateReservaAgenteUseCase createReservaAgenteUseCase=new CreateReservaAgenteUseCase(reservaRepository);
-                                FindReservaAgenteUseCase findReservaAgenteUseCase=new FindReservaAgenteUseCase(reservaRepository); 
-                                DeleteReservaAgenteUseCase deleteReservaAgenteUseCase=new DeleteReservaAgenteUseCase(reservaRepository);   
-                                CancelReservaClienteUseCase cancelReservaClienteUseCase=new  CancelReservaClienteUseCase(reservaRepository); 
-                                ReservaController reservaController= new ReservaController(createReservaAgenteUseCase,findReservaAgenteUseCase,
-                                deleteReservaAgenteUseCase,cancelReservaClienteUseCase);
-                        
-                                reservaController.gestionReserva();
                                 break;
-
-                            case 10:
+                            
+                            case 6:
 
                                 TarifaRepository tarifaRepository = new TarifaRepository();
                                 CreateTarifaUseCase createTarifaUseCase = new CreateTarifaUseCase(tarifaRepository);
@@ -249,9 +273,21 @@ public class UsuarioController {
                                 tarifaController.gestionTarifas();
                                 break;
 
-                            case 11:
 
+                            case 7:
                             
+                                TipoDocumentoRepository tipoDocumentoRepository=new TipoDocumentoRepository();
+                                CreateTipoDocumentoUseCase createTipoDocumentoUseCase=new CreateTipoDocumentoUseCase(tipoDocumentoRepository);
+                                UpdateTipoDocumentoUseCase updateTipoDocumentoUseCase=new UpdateTipoDocumentoUseCase(tipoDocumentoRepository);
+                                DeleteTipoDocumentoUseCase deleteTipoDocumentoUseCase=new DeleteTipoDocumentoUseCase(tipoDocumentoRepository);
+                                FindTipoDocumentoUseCase findTipoDocumentoUseCase=new FindTipoDocumentoUseCase(tipoDocumentoRepository);
+                                TipoDocumentoController tipoDocumentoController=new TipoDocumentoController(createTipoDocumentoUseCase, updateTipoDocumentoUseCase,deleteTipoDocumentoUseCase,findTipoDocumentoUseCase);
+                
+                                tipoDocumentoController.gestionTipoDocumento();
+                                break;
+
+                            case 8:
+                    
                                 vueloRepository vueloRepository = new vueloRepository();
                                 FindvueloUseCase findvueloUseCase = new FindvueloUseCase(vueloRepository);
                                 SearchVueloxCiudadUseCase searchVueloxCiudadUseCase = new SearchVueloxCiudadUseCase(vueloRepository);
@@ -263,15 +299,25 @@ public class UsuarioController {
 
                                 vueloController vueloController = new vueloController(findvueloUseCase, searchVueloxCiudadUseCase, createReservaxClienteUseCase, addPasajeroUseCase, mostrarAsientoUseCase, asignarAsientoUseCase, findEscalaUseCase, pagarValorReservaUseCase);
                 
-                                vueloController.gestionVuelo();
+                                vueloController.gestionVueloAdminAgente();
+
                                 break;
 
-                            case 12:
+                            case 9:
 
                                 System.out.println("Saliendo...");
-                                scanner.close();
-                                System.exit(0);
-                                break;
+                                return;
+
+
+                            // case 71:
+
+                         
+                            // case 12:
+
+                            //     System.out.println("Saliendo...");
+                            //     scanner.close();
+                            //     System.exit(0);
+                            //     break;
                             
                             default:
 
@@ -281,13 +327,213 @@ public class UsuarioController {
                         }
                     }
 
+                case 3:
+                    
+                    System.out.println("Bienvenido Tecnico Mantenimiento, " + usuarioValidado.getUsuario());
+
+                    while (true) {
+
+                        System.out.println("");
+                        System.out.println("███╗   ███╗███████╗███╗   ██╗██╗   ██╗    ████████╗███████╗ ██████╗███╗   ██╗██╗ ██████╗ ██████╗ \n" + //
+                                                        "████╗ ████║██╔════╝████╗  ██║██║   ██║    ╚══██╔══╝██╔════╝██╔════╝████╗  ██║██║██╔════╝██╔═══██╗\n" + //
+                                                        "██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║       ██║   █████╗  ██║     ██╔██╗ ██║██║██║     ██║   ██║\n" + //
+                                                        "██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║       ██║   ██╔══╝  ██║     ██║╚██╗██║██║██║     ██║   ██║\n" + //
+                                                        "██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝       ██║   ███████╗╚██████╗██║ ╚████║██║╚██████╗╚██████╔╝\n" + //
+                                                        "╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝        ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═════╝ ");
+                        System.out.println("1. Gestión de revisión de mantenimiento: ");
+                        System.out.println("2. Salir: ");
+
+                        int opcion = scanner.nextInt();
+                        scanner.nextLine(); // Consumir el salto de línea después de nextInt
+
+                        switch (opcion) {
+
+                            case 1:
+
+                                RevisionRepository revisionRepository = new RevisionRepository();
+                                CreateRevisionUseCase createRevisionUseCase = new CreateRevisionUseCase(revisionRepository);
+                                FindRevisionUseCase findRevisionUseCase = new FindRevisionUseCase(revisionRepository);
+                                UpdateRevisionUseCase updateRevisionUseCase = new UpdateRevisionUseCase(revisionRepository);
+                                DeleteRevisionUseCase deleteRevisionUseCase = new DeleteRevisionUseCase(revisionRepository);
+                                RevisionController revisionController = new RevisionController(createRevisionUseCase, updateRevisionUseCase, findRevisionUseCase, deleteRevisionUseCase);
+                        
+                                revisionController.gestionRevision();
+                                break;
+                                
+                            case 2:
+
+                                System.out.println("Saliendo...");
+
+                                return;
+
+                            default:
+
+                                System.out.println("Opción no valida ...");
+
+                                break;
+                        }
+                    }
+
+                case 4:
+
+                System.out.println("Bienvenido Agente de Ventas, " + usuarioValidado.getUsuario());
+
+                EscalaRepository escalaRepository = new EscalaRepository();
+                FindEscalaUseCase findEscalaUseCase = new FindEscalaUseCase(escalaRepository);
+
+                while (true) {
+                    System.out.println("   ");
+                    System.out.println("███╗   ███╗███████╗███╗   ██╗██╗   ██╗                                  \n" + //
+                    "████╗ ████║██╔════╝████╗  ██║██║   ██║                                  \n" + //
+                    "██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║                                  \n" + //
+                    "██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║                                  \n" + //
+                    "██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝                                  \n" + //
+                    "╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝                                   \n" + //
+                    "                                                                        \n" + //
+                    " █████╗  ██████╗ ███████╗███╗   ██╗████████╗███████╗    ██████╗ ███████╗\n" + //
+                    "██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██╔════╝    ██╔══██╗██╔════╝\n" + //
+                    "███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   █████╗      ██║  ██║█████╗  \n" + //
+                    "██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██╔══╝      ██║  ██║██╔══╝  \n" + //
+                    "██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ███████╗    ██████╔╝███████╗\n" + //
+                    "╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝    ╚═════╝ ╚══════╝\n" + //
+                    "                                                                        \n" + //
+                    "██╗   ██╗███████╗███╗   ██╗████████╗ █████╗ ███████╗                    \n" + //
+                    "██║   ██║██╔════╝████╗  ██║╚══██╔══╝██╔══██╗██╔════╝                    \n" + //
+                    "██║   ██║█████╗  ██╔██╗ ██║   ██║   ███████║███████╗                    \n" + //
+                    "╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██╔══██║╚════██║                    \n" + //
+                    " ╚████╔╝ ███████╗██║ ╚████║   ██║   ██║  ██║███████║                    \n" + //
+                    "  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚══════╝                    ");
+                    System.out.println(" ");
+                    System.out.println("1. Gestión de clientes: ");
+                    System.out.println("2. Gestión de reserva de vuelo: ");
+                    System.out.println("3. Consultar tipo de documento: ");
+                    System.out.println("4. Consultar información de vuelo: ");
+                    System.out.println("5. Consultar tripulación: ");
+                    System.out.println("6. Consultar escalas: ");
+                    System.out.println("7. Consultar tarifa de vuelo: ");
+                    System.out.println("8. Salir: ");
+                    System.out.println("   ");
+
+                    int opcion = scanner.nextInt();
+                    scanner.nextLine(); // Consumir el salto de línea después de nextInt
+
+                    switch (opcion) {
+
+                        case 1:
+
+                            ClienteRepository clienteRepository = new ClienteRepository();
+                            CreateClienteCase createClienteCase = new CreateClienteCase(clienteRepository);
+                            FindClienteCase findClienteCase = new FindClienteCase(clienteRepository);
+                            UpdateClienteCase updateClienteCase = new UpdateClienteCase(clienteRepository);
+                            DeleteClienteCase deleteClienteCase = new DeleteClienteCase(clienteRepository);
+                            ClienteController clienteController = new ClienteController(createClienteCase, findClienteCase, deleteClienteCase, updateClienteCase);
+                            clienteController.gestionCliente();
+                            break;
+
+                            
+                        case 2:
+
+                            ReservaRepository reservaRepository=new ReservaRepository();
+                            CreateReservaAgenteUseCase createReservaAgenteUseCase=new CreateReservaAgenteUseCase(reservaRepository);
+                            FindReservaAgenteUseCase findReservaAgenteUseCase=new FindReservaAgenteUseCase(reservaRepository); 
+                            DeleteReservaAgenteUseCase deleteReservaAgenteUseCase=new DeleteReservaAgenteUseCase(reservaRepository);   
+                            CancelReservaClienteUseCase cancelReservaClienteUseCase=new  CancelReservaClienteUseCase(reservaRepository); 
+                            ReservaController reservaController= new ReservaController(createReservaAgenteUseCase,findReservaAgenteUseCase,
+                            deleteReservaAgenteUseCase,cancelReservaClienteUseCase);
+                            
+                            reservaController.gestionReservaAgenteVentas();
+                            break;
+
+                        case 3:
+                                TipoDocumentoRepository tipoDocumentoRepository=new TipoDocumentoRepository();
+                                CreateTipoDocumentoUseCase createTipoDocumentoUseCase=new CreateTipoDocumentoUseCase(tipoDocumentoRepository);
+                                UpdateTipoDocumentoUseCase updateTipoDocumentoUseCase=new UpdateTipoDocumentoUseCase(tipoDocumentoRepository);
+                                DeleteTipoDocumentoUseCase deleteTipoDocumentoUseCase=new DeleteTipoDocumentoUseCase(tipoDocumentoRepository);
+                                FindTipoDocumentoUseCase findTipoDocumentoUseCase=new FindTipoDocumentoUseCase(tipoDocumentoRepository);
+                                TipoDocumentoController tipoDocumentoController=new TipoDocumentoController(createTipoDocumentoUseCase, updateTipoDocumentoUseCase,deleteTipoDocumentoUseCase,findTipoDocumentoUseCase);
+                
+                                tipoDocumentoController.findIdtipoDocumento();
+                                break;
+
+                        case 4:
+
+                            vueloRepository vueloRepository = new vueloRepository();
+                            FindvueloUseCase findvueloUseCase = new FindvueloUseCase(vueloRepository);
+                            SearchVueloxCiudadUseCase searchVueloxCiudadUseCase = new SearchVueloxCiudadUseCase(vueloRepository);
+                            CreateReservaxClienteUseCase createReservaxClienteUseCase = new CreateReservaxClienteUseCase(vueloRepository);
+                            AddPasajeroUseCase addPasajeroUseCase = new AddPasajeroUseCase(vueloRepository);
+                            MostrarAsientoUseCase mostrarAsientoUseCase = new MostrarAsientoUseCase(vueloRepository);
+                            AsignarAsientoUseCase asignarAsientoUseCase = new AsignarAsientoUseCase(vueloRepository);
+                            PagarValorReservaUseCase pagarValorReservaUseCase = new PagarValorReservaUseCase(vueloRepository);
+
+                            vueloController vueloController = new vueloController(findvueloUseCase, searchVueloxCiudadUseCase, createReservaxClienteUseCase, addPasajeroUseCase, mostrarAsientoUseCase, asignarAsientoUseCase, findEscalaUseCase, pagarValorReservaUseCase);
+            
+                            vueloController.findVuelo();
+                            break;
+
+
+                        case 5:
+
+                            TripulacionRepository tripulacionRepository = new TripulacionRepository();
+                            CreateTripulacionUseCase createTripulacionUseCase = new CreateTripulacionUseCase(tripulacionRepository);
+                            FindTripulacionUseCase findTripulacionUseCase=new FindTripulacionUseCase(tripulacionRepository);
+                            TripulacionController tripulacionController = new TripulacionController(createTripulacionUseCase, findTripulacionUseCase);
+
+                            tripulacionController.findTripulacion();
+                            break;
+
+                        case 6:
+
+                            UpdateEscalaUseCase updateEscalaUseCase = new UpdateEscalaUseCase(escalaRepository);
+                            DeleteEscalaUseCase deleteEscalaUseCase = new DeleteEscalaUseCase(escalaRepository);
+                            AsignAvionUseCase asignAvionUseCase = new AsignAvionUseCase(escalaRepository);
+                            EscalaController escalaController = new EscalaController(findEscalaUseCase, updateEscalaUseCase, deleteEscalaUseCase, asignAvionUseCase);
+                    
+                            escalaController.findEscalas();
+
+                            break;
+
+                        case 7:
+
+                            TarifaRepository tarifaRepository = new TarifaRepository();
+                            CreateTarifaUseCase createTarifaUseCase = new CreateTarifaUseCase(tarifaRepository);
+                            FindTarifaUseCase findTarifaUseCase = new FindTarifaUseCase(tarifaRepository);
+                            DeleteTarifaUseCase deleteTarifaUseCase = new DeleteTarifaUseCase(tarifaRepository);
+                            UpdateTarifaUseCase updateTarifaUseCase = new UpdateTarifaUseCase(tarifaRepository);
+
+                            TarifaController tarifaController = new TarifaController(createTarifaUseCase, findTarifaUseCase, deleteTarifaUseCase, updateTarifaUseCase);
+                            tarifaController.buscarTarifa();
+                            break;
+
+
+                        case 8:
+
+                            System.out.println("Saliendo...");
+
+                            return;
+
+
+                        default:
+
+                            System.out.println("Opción no valida ...");
+
+                            break;
+                    }
+                }
+
+
+
+
+
+
+
+
+
                 default:
-                    // Acciones para otros roles
                     System.out.println("Bienvenido Usuario con otro rol: " + usuarioValidado.getUsuario());
-                    // Aquí puedes manejar otros roles según sea necesario
                     break;
             }
-        } else {
+        }else {
             System.out.println("Usuario no válido.");
         }
     }
