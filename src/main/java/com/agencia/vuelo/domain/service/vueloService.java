@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.agencia.asientos.domain.entity.Asiento;
 import com.agencia.asientos.domain.entity.AsientoDetalle;
-import com.agencia.reserva.domain.entity.DetalleReserva;
 import com.agencia.reserva.domain.entity.Reserva;
+import com.agencia.vuelo.domain.entity.DetalleReserva;
 import com.agencia.vuelo.domain.entity.Vuelos;
 
 public interface vueloService {

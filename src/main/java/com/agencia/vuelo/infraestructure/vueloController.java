@@ -8,7 +8,6 @@ import com.agencia.asientos.domain.entity.Asiento;
 import com.agencia.asientos.domain.entity.AsientoDetalle;
 import com.agencia.escala.application.FindEscalaUseCase;
 import com.agencia.escala.domain.entity.Escala;
-import com.agencia.reserva.domain.entity.DetalleReserva;
 import com.agencia.reserva.domain.entity.Reserva;
 import com.agencia.vuelo.application.AddPasajeroUseCase;
 import com.agencia.vuelo.application.AsignarAsientoUseCase;
@@ -17,6 +16,7 @@ import com.agencia.vuelo.application.PagarValorReservaUseCase;
 import com.agencia.vuelo.application.CreateReservaxClienteUseCase;
 import com.agencia.vuelo.application.FindvueloUseCase;
 import com.agencia.vuelo.application.SearchVueloxCiudadUseCase;
+import com.agencia.vuelo.domain.entity.DetalleReserva;
 import com.agencia.vuelo.domain.entity.Vuelos;
 
 public class vueloController {

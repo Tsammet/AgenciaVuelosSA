@@ -1,5 +1,5 @@
 
-package com.agencia.reserva.domain.entity;
+package com.agencia.vuelo.domain.entity;
 
 public class Ciudad {
 private String id;

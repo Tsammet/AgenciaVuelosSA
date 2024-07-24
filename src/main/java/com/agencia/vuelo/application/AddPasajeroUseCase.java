@@ -1,6 +1,6 @@
 package com.agencia.vuelo.application;
 
-import com.agencia.reserva.domain.entity.DetalleReserva;
+import com.agencia.vuelo.domain.entity.DetalleReserva;
 import com.agencia.vuelo.domain.service.vueloService;
 
 public class AddPasajeroUseCase {
