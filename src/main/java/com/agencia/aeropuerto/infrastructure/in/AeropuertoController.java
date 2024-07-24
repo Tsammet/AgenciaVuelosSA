@@ -107,7 +107,6 @@ public class AeropuertoController {
 
         System.out.println("Ingrese el nuevo ID de la ciudad del aeropuerto: ");
         String nuevaCiudad = scanner.nextLine();
-        scanner.nextLine();
 
         Aeropuerto newAeropuerto = new Aeropuerto();
 

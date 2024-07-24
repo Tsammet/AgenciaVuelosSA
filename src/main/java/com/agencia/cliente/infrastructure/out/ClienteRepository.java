@@ -59,6 +59,8 @@ public class ClienteRepository implements ClienteService {
             statement.setInt(5, cliente.getRol());
             statement.setInt(6, cliente.getId());
 
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -103,8 +105,7 @@ public class ClienteRepository implements ClienteService {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
 
-            // int rowsDeleted = statement.executeUpdate();
-            // System.out.println("Número de filas eliminadas: " + rowsDeleted);
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

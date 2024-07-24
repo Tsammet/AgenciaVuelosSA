@@ -39,6 +39,8 @@ public class TripulacionController {
                 case 2:
 
                     findTripulacion();
+                    
+                    break;
             
                 case 3: 
 

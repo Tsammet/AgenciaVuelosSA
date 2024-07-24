@@ -162,6 +162,7 @@ public class vueloController {
             
         }else{
             System.out.println("Vuelo no encontrado");
+            return;
         }
 
         System.out.println("Digite el id del vuelo que desea seleccionar : ");
@@ -178,6 +179,7 @@ public class vueloController {
             System.out.println("id destino viaje: " + vuelo.getIddestino());
         }else{
             System.out.println("Vuelo no encontrado");
+            return;
         }
         System.out.println("-------------------------------------------------------");
         System.out.println("Deseas confirmar la selección del vuelo? (Si / No) : ");
@@ -200,6 +202,7 @@ public class vueloController {
             
         }else{
             System.out.println("Adios");
+            return;
         }
 
 
@@ -250,6 +253,7 @@ public class vueloController {
                 }
             } else {
                 System.out.println("No se encontraron escalas para el id de viaje proporcionado.");
+                return;
             }
 
             System.out.println("Digite el ID de la escala para la cual desea seleccionar asiento: ");
@@ -278,7 +282,7 @@ public class vueloController {
             asignarAsientoUseCase.execute(asientoDetalle);
 
             System.out.println("Asiento asignado correctamente. ");
-
+        
 
             System.out.println("Desea agregar otro pasajero? (Si / No)");
             agregarPasajero = scanner.nextLine().trim().toLowerCase();

@@ -66,6 +66,7 @@ public class TarifaController {
                 return;
 
             default:
+                System.out.println("opción no valida");
                 break;
         }
     }
