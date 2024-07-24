@@ -28,11 +28,12 @@ public class vueloRepository implements vueloService {
         String url = props.getProperty("url");
         String user = props.getProperty("user");
         String password = props.getProperty("password");
+        
 
         System.out.println("URL: " + url); // Verificar la URL cargada
         System.out.println("User: " + user); // Verificar el usuario cargado
         // N
-        
+
         connection = DriverManager.getConnection(url, user, password);
         System.out.println("Conexión exitosa!");
       } catch (Exception e) {
