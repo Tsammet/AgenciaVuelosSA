@@ -4,6 +4,7 @@ import com.agencia.reserva.domain.entity.Reserva;
 import com.agencia.reserva.domain.service.ReservaService;
 
 public class FindReservaAgenteUseCase {
+    
     private final ReservaService reservaServiceOlf;
     
     public FindReservaAgenteUseCase(ReservaService reservaServiceOlf) {

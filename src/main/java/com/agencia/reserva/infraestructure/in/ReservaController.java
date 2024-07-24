@@ -130,10 +130,13 @@ public class ReservaController {
     }
 
     public void findReservaAgente() {
+
         System.out.println("Ingrese ID de la reserva: ");
         int idReservaAgente = scanner.nextInt();
         scanner.nextLine();
+
         Reserva reserva = findReservaAgenteUseCase.execute(idReservaAgente);
+        
         if (reserva != null) {
             System.out.println("Id Reserva: " + reserva.getId());
             System.out.println("Fecha: " + reserva.getFechaReserva());
