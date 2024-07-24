@@ -26,3 +26,5 @@ SA AIRLINE es un sistema de gestión diseñado para manejar las operaciones comp
 **Tarifas y Tipos de Documentos:**
 - Administración de diferentes tipos de tarifas de vuelo y sus valores.
 - Gestión de tipos de documentos de identidad aceptados para los clientes.
+
+### DESARROLLADO POR CARLOS SANCHEZ DIAZ // SILVIA ANGARITA CASTILLO 
