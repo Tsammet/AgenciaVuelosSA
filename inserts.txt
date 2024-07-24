@@ -225,7 +225,10 @@ VALUES
     (2, '2024-08-20', 300, 'LYO1', 'MAR1'),
     (3, '2024-09-05', 200, 'HAM1', 'MIA1'),
     (4, '2024-09-10', 350, 'BOG1', 'MIA1'),
-    (5, '2024-10-01', 180, 'NYC1', 'PAR1');
+    (5, '2024-10-01', 180, 'NYC1', 'PAR1'),
+    (6, '2024-08-15', 210, 'MAD1', 'LAX1'),
+    (7, '2024-09-10', 320, 'MAD1', 'LAX1'),
+    (8, '2024-10-01', 190, 'NYC1', 'PAR1');
 
 
 INSERT INTO reservaviaje (fecha, idvuelos,idclientes)
@@ -251,26 +254,147 @@ VALUES (5, 5, 5);
 
 
 
-INSERT INTO asientos (numeroasiento) VALUES (1);
-INSERT INTO asientos (numeroasiento) VALUES (2);
-INSERT INTO asientos (numeroasiento) VALUES (3);
-INSERT INTO asientos (numeroasiento) VALUES (4);
-INSERT INTO asientos (numeroasiento) VALUES (5);
-INSERT INTO asientos (numeroasiento) VALUES (6);
-INSERT INTO asientos (numeroasiento) VALUES (7);
-INSERT INTO asientos (numeroasiento) VALUES (8);
-INSERT INTO asientos (numeroasiento) VALUES (9);
-INSERT INTO asientos (numeroasiento) VALUES (10);
-INSERT INTO asientos (numeroasiento) VALUES (11);
-INSERT INTO asientos (numeroasiento) VALUES (12);
-INSERT INTO asientos (numeroasiento) VALUES (13);
-INSERT INTO asientos (numeroasiento) VALUES (14);
-INSERT INTO asientos (numeroasiento) VALUES (15);
-INSERT INTO asientos (numeroasiento) VALUES (16);
-INSERT INTO asientos (numeroasiento) VALUES (17);
-INSERT INTO asientos (numeroasiento) VALUES (18);
-INSERT INTO asientos (numeroasiento) VALUES (19);
-INSERT INTO asientos (numeroasiento) VALUES (20);
+INSERT INTO asientos (numeroasiento) VALUES ('A1');
+INSERT INTO asientos (numeroasiento) VALUES ('A2');
+INSERT INTO asientos (numeroasiento) VALUES ('A3');
+INSERT INTO asientos (numeroasiento) VALUES ('A4');
+INSERT INTO asientos (numeroasiento) VALUES ('A5');
+INSERT INTO asientos (numeroasiento) VALUES ('A6');
+INSERT INTO asientos (numeroasiento) VALUES ('A7');
+INSERT INTO asientos (numeroasiento) VALUES ('A8');
+INSERT INTO asientos (numeroasiento) VALUES ('A9');
+INSERT INTO asientos (numeroasiento) VALUES ('A10');
+INSERT INTO asientos (numeroasiento) VALUES ('A11');
+INSERT INTO asientos (numeroasiento) VALUES ('A12');
+INSERT INTO asientos (numeroasiento) VALUES ('B1');
+INSERT INTO asientos (numeroasiento) VALUES ('B2');
+INSERT INTO asientos (numeroasiento) VALUES ('B3');
+INSERT INTO asientos (numeroasiento) VALUES ('B4');
+INSERT INTO asientos (numeroasiento) VALUES ('B5');
+INSERT INTO asientos (numeroasiento) VALUES ('B6');
+INSERT INTO asientos (numeroasiento) VALUES ('B7');
+INSERT INTO asientos (numeroasiento) VALUES ('B8');
+INSERT INTO asientos (numeroasiento) VALUES ('B9');
+INSERT INTO asientos (numeroasiento) VALUES ('B10');
+INSERT INTO asientos (numeroasiento) VALUES ('B11');
+INSERT INTO asientos (numeroasiento) VALUES ('B12');
+INSERT INTO asientos (numeroasiento) VALUES ('C1');
+INSERT INTO asientos (numeroasiento) VALUES ('C2');
+INSERT INTO asientos (numeroasiento) VALUES ('C3');
+INSERT INTO asientos (numeroasiento) VALUES ('C4');
+INSERT INTO asientos (numeroasiento) VALUES ('C5');
+INSERT INTO asientos (numeroasiento) VALUES ('C6');
+INSERT INTO asientos (numeroasiento) VALUES ('C7');
+INSERT INTO asientos (numeroasiento) VALUES ('C8');
+INSERT INTO asientos (numeroasiento) VALUES ('C9');
+INSERT INTO asientos (numeroasiento) VALUES ('C10');
+INSERT INTO asientos (numeroasiento) VALUES ('C11');
+INSERT INTO asientos (numeroasiento) VALUES ('C12');
+INSERT INTO asientos (numeroasiento) VALUES ('D1');
+INSERT INTO asientos (numeroasiento) VALUES ('D2');
+INSERT INTO asientos (numeroasiento) VALUES ('D3');
+INSERT INTO asientos (numeroasiento) VALUES ('D4');
+INSERT INTO asientos (numeroasiento) VALUES ('D5');
+INSERT INTO asientos (numeroasiento) VALUES ('D6');
+INSERT INTO asientos (numeroasiento) VALUES ('D7');
+INSERT INTO asientos (numeroasiento) VALUES ('D8');
+INSERT INTO asientos (numeroasiento) VALUES ('D9');
+INSERT INTO asientos (numeroasiento) VALUES ('D10');
+INSERT INTO asientos (numeroasiento) VALUES ('D11');
+INSERT INTO asientos (numeroasiento) VALUES ('D12');
+INSERT INTO asientos (numeroasiento) VALUES ('E1');
+INSERT INTO asientos (numeroasiento) VALUES ('E2');
+INSERT INTO asientos (numeroasiento) VALUES ('E3');
+INSERT INTO asientos (numeroasiento) VALUES ('E4');
+INSERT INTO asientos (numeroasiento) VALUES ('E5');
+INSERT INTO asientos (numeroasiento) VALUES ('E6');
+INSERT INTO asientos (numeroasiento) VALUES ('E7');
+INSERT INTO asientos (numeroasiento) VALUES ('E8');
+INSERT INTO asientos (numeroasiento) VALUES ('E9');
+INSERT INTO asientos (numeroasiento) VALUES ('E10');
+INSERT INTO asientos (numeroasiento) VALUES ('E11');
+INSERT INTO asientos (numeroasiento) VALUES ('E12');
+INSERT INTO asientos (numeroasiento) VALUES ('F1');
+INSERT INTO asientos (numeroasiento) VALUES ('F2');
+INSERT INTO asientos (numeroasiento) VALUES ('F3');
+INSERT INTO asientos (numeroasiento) VALUES ('F4');
+INSERT INTO asientos (numeroasiento) VALUES ('F5');
+INSERT INTO asientos (numeroasiento) VALUES ('F6');
+INSERT INTO asientos (numeroasiento) VALUES ('F7');
+INSERT INTO asientos (numeroasiento) VALUES ('F8');
+INSERT INTO asientos (numeroasiento) VALUES ('F9');
+INSERT INTO asientos (numeroasiento) VALUES ('F10');
+INSERT INTO asientos (numeroasiento) VALUES ('F11');
+INSERT INTO asientos (numeroasiento) VALUES ('F12');
+INSERT INTO asientos (numeroasiento) VALUES ('G1');
+INSERT INTO asientos (numeroasiento) VALUES ('G2');
+INSERT INTO asientos (numeroasiento) VALUES ('G3');
+INSERT INTO asientos (numeroasiento) VALUES ('G4');
+INSERT INTO asientos (numeroasiento) VALUES ('G5');
+INSERT INTO asientos (numeroasiento) VALUES ('G6');
+INSERT INTO asientos (numeroasiento) VALUES ('G7');
+INSERT INTO asientos (numeroasiento) VALUES ('G8');
+INSERT INTO asientos (numeroasiento) VALUES ('G9');
+INSERT INTO asientos (numeroasiento) VALUES ('G10');
+INSERT INTO asientos (numeroasiento) VALUES ('G11');
+INSERT INTO asientos (numeroasiento) VALUES ('G12');
+INSERT INTO asientos (numeroasiento) VALUES ('H1');
+INSERT INTO asientos (numeroasiento) VALUES ('H2');
+INSERT INTO asientos (numeroasiento) VALUES ('H3');
+INSERT INTO asientos (numeroasiento) VALUES ('H4');
+INSERT INTO asientos (numeroasiento) VALUES ('H5');
+INSERT INTO asientos (numeroasiento) VALUES ('H6');
+INSERT INTO asientos (numeroasiento) VALUES ('H7');
+INSERT INTO asientos (numeroasiento) VALUES ('H8');
+INSERT INTO asientos (numeroasiento) VALUES ('H9');
+INSERT INTO asientos (numeroasiento) VALUES ('H10');
+INSERT INTO asientos (numeroasiento) VALUES ('H11');
+INSERT INTO asientos (numeroasiento) VALUES ('H12');
+INSERT INTO asientos (numeroasiento) VALUES ('I1');
+INSERT INTO asientos (numeroasiento) VALUES ('I2');
+INSERT INTO asientos (numeroasiento) VALUES ('I3');
+INSERT INTO asientos (numeroasiento) VALUES ('I4');
+INSERT INTO asientos (numeroasiento) VALUES ('I5');
+INSERT INTO asientos (numeroasiento) VALUES ('I6');
+INSERT INTO asientos (numeroasiento) VALUES ('I7');
+INSERT INTO asientos (numeroasiento) VALUES ('I8');
+INSERT INTO asientos (numeroasiento) VALUES ('I9');
+INSERT INTO asientos (numeroasiento) VALUES ('I10');
+INSERT INTO asientos (numeroasiento) VALUES ('I11');
+INSERT INTO asientos (numeroasiento) VALUES ('I12');
+INSERT INTO asientos (numeroasiento) VALUES ('J1');
+INSERT INTO asientos (numeroasiento) VALUES ('J2');
+INSERT INTO asientos (numeroasiento) VALUES ('J3');
+INSERT INTO asientos (numeroasiento) VALUES ('J4');
+INSERT INTO asientos (numeroasiento) VALUES ('J5');
+INSERT INTO asientos (numeroasiento) VALUES ('J6');
+INSERT INTO asientos (numeroasiento) VALUES ('J7');
+INSERT INTO asientos (numeroasiento) VALUES ('J8');
+INSERT INTO asientos (numeroasiento) VALUES ('J9');
+INSERT INTO asientos (numeroasiento) VALUES ('J10');
+INSERT INTO asientos (numeroasiento) VALUES ('J11');
+INSERT INTO asientos (numeroasiento) VALUES ('J12');
+INSERT INTO asientos (numeroasiento) VALUES ('K1');
+INSERT INTO asientos (numeroasiento) VALUES ('K2');
+INSERT INTO asientos (numeroasiento) VALUES ('K3');
+INSERT INTO asientos (numeroasiento) VALUES ('K4');
+INSERT INTO asientos (numeroasiento) VALUES ('K5');
+INSERT INTO asientos (numeroasiento) VALUES ('K6');
+INSERT INTO asientos (numeroasiento) VALUES ('K7');
+INSERT INTO asientos (numeroasiento) VALUES ('K8');
+INSERT INTO asientos (numeroasiento) VALUES ('K9');
+INSERT INTO asientos (numeroasiento) VALUES ('K10');
+INSERT INTO asientos (numeroasiento) VALUES ('K11');
+INSERT INTO asientos (numeroasiento) VALUES ('K12');
+INSERT INTO asientos (numeroasiento) VALUES ('L1');
+INSERT INTO asientos (numeroasiento) VALUES ('L2');
+INSERT INTO asientos (numeroasiento) VALUES ('L3');
+INSERT INTO asientos (numeroasiento) VALUES ('L4');
+INSERT INTO asientos (numeroasiento) VALUES ('L5');
+INSERT INTO asientos (numeroasiento) VALUES ('L6');
+INSERT INTO asientos (numeroasiento) VALUES ('L7');
+INSERT INTO asientos (numeroasiento) VALUES ('L8');
+INSERT INTO asientos (numeroasiento) VALUES ('L9');
 
 
 INSERT INTO aerolineas (nombre) VALUES ('Iberia');
@@ -586,7 +710,10 @@ VALUES
     (9, 'CV-009', 3, 18, 'PAR2', 'MIA1'),
     (10, 'CV-010', 4, 11, 'CAR1', 'CLO1'),
     (11, 'CV-011', 4, 10, 'CHI1', 'CAR1'),
-    (12, 'CV-012', 5, 4, 'LYO1', 'FRA1');
+    (12, 'CV-012', 5, 4, 'LYO1', 'FRA1'),
+    (13, 'CV-013', 6, 2, 'HAM1', 'MIA1'),
+    (14, 'CV-014', 7, 1, 'BOG1', 'MIA1'),
+    (15, 'CV-015', 8, 2, 'NYC1', 'PAR1');
 
 
 INSERT INTO tripulantes (idconexion, idempleado)

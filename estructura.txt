@@ -107,7 +107,7 @@ CREATE TABLE detallesreservaviaje (
 
 CREATE TABLE asientos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    numeroasiento INT
+    numeroasiento VARCHAR(10)
   
 );
 
@@ -207,4 +207,3 @@ CREATE TABLE user(
 	idRol INT NULL,
 	FOREIGN KEY (idRol) REFERENCES roles(id) ON DELETE SET NULL ON UPDATE CASCADE);
 	
-
