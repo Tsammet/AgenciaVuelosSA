@@ -12,7 +12,7 @@ import com.agencia.vuelo.domain.entity.Vuelos;
 public interface vueloService {
 
     Vuelos findVuelo(int id);    
-    List<Vuelos> searchVueloxCiudad(String ciudadOrigen, String ciudadDestino);
+    List<Vuelos> searchVueloxCiudad(String ciudadOrigen, String ciudadDestino, String fechaviaje);
     void createReserva(Reserva reserva);
     void addPasajero(DetalleReserva detalleReserva);
     List<Asiento> assignAsiento(int id);

@@ -45,8 +45,6 @@ public class TarifaRepository implements TarifaService {
 
       ps.executeUpdate();
 
-      System.out.println("Tarifa creada con éxito!");
-
     } catch (SQLException e) {
       e.printStackTrace();
 
@@ -64,9 +62,8 @@ public class TarifaRepository implements TarifaService {
       statement.setBigDecimal(3, tarifa.getValor());
       statement.setInt(4, tarifa.getId());
 
-      int rowsUpdate = statement.executeUpdate();
-
-      System.out.println("Numero de filas actualizadas  " + rowsUpdate);
+      // int rowsUpdate = statement.executeUpdate();
+      // System.out.println("Numero de filas actualizadas  " + rowsUpdate);
 
     } catch (SQLException e) {
       e.printStackTrace();
@@ -110,6 +107,7 @@ public class TarifaRepository implements TarifaService {
 
         statement.setInt(1, id);
         rowsUpdate = statement.executeUpdate();
+        
 
         System.out.println("Número de filas eliminadas: " + rowsUpdate);
 

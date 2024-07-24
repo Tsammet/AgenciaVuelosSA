@@ -502,7 +502,7 @@ public class UsuarioController {
                             UpdateTarifaUseCase updateTarifaUseCase = new UpdateTarifaUseCase(tarifaRepository);
 
                             TarifaController tarifaController = new TarifaController(createTarifaUseCase, findTarifaUseCase, deleteTarifaUseCase, updateTarifaUseCase);
-                            tarifaController.buscarTarifa();
+                            tarifaController.findTarifa();
                             break;
 
 

@@ -1,10 +1,7 @@
 package com.agencia.tarifa.infraestructure.in;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 import com.agencia.tarifa.application.CreateTarifaUseCase;
 import com.agencia.tarifa.application.DeleteTarifaUseCase;
@@ -42,25 +39,25 @@ public class TarifaController {
         switch (opcion) {
             case 1:
             
-                crear();
+                createTarifa();
 
                 break;
         
             case 2:
 
-                eliminar();
+                deleteTarifa();
 
                 break;
 
             case 3:
 
-                buscarTarifa();
+                findTarifa();
 
                 break;
 
             case 4:
 
-                actualizar();
+                updateTarifa();
 
                 break;
 
@@ -74,7 +71,7 @@ public class TarifaController {
     }
 
 
-    public void crear(){
+    public void createTarifa(){
 
         System.out.println("Ingrese la descripción: ");
         String descripcion = scanner.nextLine();
@@ -92,11 +89,11 @@ public class TarifaController {
         tarifa.setValor(valor);
 
         createTarifaUseCase.execute(tarifa);
-        System.out.println("Tarifa creada correctamnte!  ");
+        System.out.println("Tarifa creada correctamnte. ");
 
     }
 
-    public void buscarTarifa(){
+    public void findTarifa(){
 
         System.out.println("Ingrese el id de la tarifa que desea buscar ");
         int idTarifa = scanner.nextInt();
@@ -105,17 +102,20 @@ public class TarifaController {
         Tarifa findTarifa = findTarifaUseCase.execute(idTarifa);
 
         if (findTarifa != null) {
-            
+        System.out.println("---------------------------");
         System.out.println("Id: " + findTarifa.getId());
         System.out.println("Detalle: " + findTarifa.getDetalles());
         System.out.println("Descripcion: " + findTarifa.getDescripcion());
         System.out.println("Valor: " + findTarifa.getValor());
-
+        System.out.println("---------------------------");
+        }
+        else{
+            System.out.println("Tarifa no encontrada. ");
         }
 
     }
 
-    public void actualizar(){
+    public void updateTarifa(){
 
         System.out.println("Ingrese el id de la tarifa que deseas modificar: ");
         int idTarifaMod = scanner.nextInt();
@@ -139,9 +139,10 @@ public class TarifaController {
         tarifa.setValor(valor);
 
         updateTarifaUseCase.execute(tarifa);
+        System.out.println("Tarifa actualizada correctamente. ");
     }
     
-    public void eliminar(){
+    public void deleteTarifa(){
         System.out.println("Ingrese el id de la tarifa para eliminar: ");
         int idTarifaEli = scanner.nextInt();
         scanner.nextLine();
@@ -149,7 +150,7 @@ public class TarifaController {
         deleteTarifaUseCase.execute(idTarifaEli);
 
         if (deleteTarifaUseCase != null) {
-            System.out.println("Eliminado");
+            System.out.println("Tarifa eliminado");
         }else{
             System.out.println("No eliminado");
         }

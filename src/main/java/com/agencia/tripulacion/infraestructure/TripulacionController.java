@@ -22,7 +22,7 @@ public class TripulacionController {
 
         while (true) {
             
-            System.out.println("1. Ingresar Empleado y conexión: ");
+            System.out.println("1. Asignar tripulación: ");
             System.out.println("2. Encontrar Tripulación: ");
             System.out.println("3. Salir: ");
 
@@ -67,7 +67,7 @@ public class TripulacionController {
             tripulacion.setIdconexion(idconexion);
 
             createTripulacionUseCase.execute(tripulacion);
-            System.out.println("Tripulante creado correctamente <3");
+            System.out.println("Tripulación asignada correctamente.");
 
         }
 
@@ -81,8 +81,11 @@ public class TripulacionController {
             Tripulacion findTripulacion = findTripulacionUseCase.execute(idEscala);
 
             if (findTripulacion != null) {
+                System.out.println("--------------------------------");
+                System.out.println("TRIPULACIÓN PARA LA ESCALA");
                 System.out.println("El id del empleado: " + findTripulacion.getIdempleado());
                 System.out.println("El id de la escala es: " + findTripulacion.getIdconexion());
+                System.out.println("--------------------------------");
             }
 
 

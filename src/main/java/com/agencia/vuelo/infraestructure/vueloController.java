@@ -119,11 +119,13 @@ public class vueloController {
         Vuelos vuelo = findvueloUseCase.execute(idVuelo);
 
         if (vuelo != null) {
+            System.out.println("----------------------------------");
             System.out.println("Id vuelo: " + vuelo.getId());
             System.out.println("Fecha de viaje: " + vuelo.getFechaviaje());
             System.out.println("Precio  viaje: " + vuelo.getPrecioviaje());
             System.out.println("id origen viaje: " + vuelo.getIdorigen());
             System.out.println("id destino viaje: " + vuelo.getIddestino());
+            System.out.println("----------------------------------");
         }else{
             System.out.println("Vuelo no encontrado");
         }
@@ -131,14 +133,18 @@ public class vueloController {
     }
 
     public void searchVueloxCiudad(){
-        System.out.println("Cuál es la ciudad de origen: ");
+        System.out.println("Ingrese el ID de la ciudad de origen: ");
         String ciudadOrigen = scanner.nextLine();
 
-        System.out.println("Cuál es la ciudad de destino: ");
+        System.out.println("Ingrese el ID de la ciudad de destino: ");
         String ciudadDestino = scanner.nextLine();
 
+        System.out.println("Ingrese la fecha del vuelo: ");
+        String fechaviaje = scanner.nextLine();
+
+
         List<Vuelos> vuelos = new ArrayList<>();
-        vuelos = searchVueloxCiudadUseCase.execute(ciudadOrigen, ciudadDestino);
+        vuelos = searchVueloxCiudadUseCase.execute(ciudadOrigen, ciudadDestino, fechaviaje);
 
         if (!vuelos.isEmpty()) {
             System.out.println("-------------------------------------------");
@@ -151,6 +157,7 @@ public class vueloController {
                 System.out.println("Precio  viaje: " + vuelo.getPrecioviaje());
                 System.out.println("id origen viaje: " + vuelo.getIdorigen());
                 System.out.println("id destino viaje: " + vuelo.getIddestino());
+                System.out.println("-------------------");
             }
             
         }else{
@@ -196,9 +203,6 @@ public class vueloController {
         }
 
 
-        // ESTO DEBERIA IR APARTE EN LA FUNCION DE "AÑADIR PASAJEROS AL VUELO"
-        // Preguntar nuevamente el ID del vuelo
-
         System.out.println("Desea agregar un pasajero? (Si / No)");
         String agregarPasajero = scanner.nextLine().trim().toLowerCase();
         
@@ -231,7 +235,6 @@ public class vueloController {
 
             if (!escalas.isEmpty()) {
                 System.out.println(escalas);
-                // escalas.forEach(escala -> System.out.println(escala.getId()));
 
                 System.out.println("Las escalas de este vuelo son las siguientes: ");
                 System.out.println("-----------------------------------------------------");

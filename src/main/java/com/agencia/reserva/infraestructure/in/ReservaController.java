@@ -7,7 +7,7 @@ import com.agencia.reserva.application.CreateReservaAgenteUseCase;
 import com.agencia.reserva.application.DeleteReservaAgenteUseCase;
 import com.agencia.reserva.application.FindReservaAgenteUseCase;
 import com.agencia.reserva.domain.entity.Reserva;
-import com.agencia.vuelo.application.PagarValorReservaUseCase;
+
 
 public class ReservaController {
     private final CreateReservaAgenteUseCase createReservaAgenteUseCase;
@@ -138,6 +138,7 @@ public class ReservaController {
         Reserva reserva = findReservaAgenteUseCase.execute(idReservaAgente);
         
         if (reserva != null) {
+            System.out.println("---------------------------------");
             System.out.println("Id Reserva: " + reserva.getId());
             System.out.println("Fecha: " + reserva.getFechaReserva());
             System.out.println("Aeropuerto Origen: " + reserva.getAeropuertoOrigen());
@@ -145,7 +146,7 @@ public class ReservaController {
             System.out.println("Nombre Cliente: " + reserva.getNombreCliente());
             System.out.println("Precio Vuelo: " + reserva.getPrecio());
             System.out.println("Estado Reserva: " + reserva.getEstado());
-
+            System.out.println("---------------------------------");
         } else {
             System.out.println("Reserva no encontrada");
         }

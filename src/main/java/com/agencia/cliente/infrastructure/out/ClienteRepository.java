@@ -41,7 +41,6 @@ public class ClienteRepository implements ClienteService {
             ps.setInt(5, cliente.getRol());
 
             ps.executeUpdate();
-            System.out.println("Cliente creado con éxito!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,9 +58,6 @@ public class ClienteRepository implements ClienteService {
             statement.setString(4, cliente.getNumerodocumento());
             statement.setInt(5, cliente.getRol());
             statement.setInt(6, cliente.getId());
-
-            int rowsUpdate = statement.executeUpdate();
-            System.out.println("Cliente actualizado: " + rowsUpdate);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,8 +103,8 @@ public class ClienteRepository implements ClienteService {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
 
-            int rowsDeleted = statement.executeUpdate();
-            System.out.println("Número de filas eliminadas: " + rowsDeleted);
+            // int rowsDeleted = statement.executeUpdate();
+            // System.out.println("Número de filas eliminadas: " + rowsDeleted);
 
         } catch (SQLException e) {
             e.printStackTrace();

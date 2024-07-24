@@ -71,16 +71,17 @@ public Vuelos findVuelo(int id) {
 
   }
 
-  public List<Vuelos> searchVueloxCiudad(String ciudadOrigen, String ciudadDestino){
+  public List<Vuelos> searchVueloxCiudad(String ciudadOrigen, String ciudadDestino, String fechaviaje){
     
     List<Vuelos> vuelos = new ArrayList<>();
 
-    String query = "SELECT id, fechaviaje, precioviaje, idorigenaeropuerto, iddestionaeropuerto FROM viajes WHERE idorigenaeropuerto = ? and iddestionaeropuerto = ?";
+    String query = "SELECT id, fechaviaje, precioviaje, idorigenaeropuerto, iddestinoaeropuerto FROM viajes WHERE idorigenaeropuerto = ? and iddestinoaeropuerto = ? and fechaviaje = ?";
 
     try (PreparedStatement ps = connection.prepareStatement(query)) {
         
       ps.setString(1, ciudadOrigen);
       ps.setString(2, ciudadDestino);
+      ps.setString(3, fechaviaje);
       
       try (ResultSet rs = ps.executeQuery()) {
           while (rs.next()) {
@@ -89,7 +90,7 @@ public Vuelos findVuelo(int id) {
               vuelo.setFechaviaje(rs.getString("fechaviaje"));
               vuelo.setPrecioviaje(rs.getBigDecimal("precioviaje"));
               vuelo.setIdorigen(rs.getString("idorigenaeropuerto"));
-              vuelo.setIddestino(rs.getString("iddestionaeropuerto"));
+              vuelo.setIddestino(rs.getString("iddestinoaeropuerto"));
               vuelos.add(vuelo);
           }
         } 

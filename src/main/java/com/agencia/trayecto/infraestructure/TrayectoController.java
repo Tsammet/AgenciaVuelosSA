@@ -103,7 +103,7 @@ public class TrayectoController {
         System.out.println("Ingrese el id del aeropuerto de origen:  ");
         String nuevoAeropuerto = scanner.nextLine();
 
-        System.out.println("Ingrese el ide del aeropuerto de destino: ");
+        System.out.println("Ingrese el id del aeropuerto de destino: ");
         String destinoAeropuerto = scanner.nextLine();
 
         Trayecto updateTrayecto = new Trayecto();

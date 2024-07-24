@@ -144,12 +144,14 @@ public class ClienteController {
         Cliente foundCliente = findClienteCase.execute(idCliente);
 
         if (foundCliente != null) {
+            System.out.println("---------------------------------------");
             System.out.println("Id: " + foundCliente.getId());
             System.out.println("Nombre: " + foundCliente.getNombre());
             System.out.println("Edad: " + foundCliente.getEdad());
             System.out.println("ID Tipo Documento: " + foundCliente.getIdtipodocumento());
             System.out.println("Número Documento: " + foundCliente.getNumerodocumento());
             System.out.println("Rol: " + foundCliente.getRol());
+            System.out.println("---------------------------------------");
         } else {
             System.out.println("Cliente no encontrado.");
         }

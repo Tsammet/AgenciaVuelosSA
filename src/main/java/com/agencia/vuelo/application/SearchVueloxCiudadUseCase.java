@@ -13,8 +13,8 @@ public class SearchVueloxCiudadUseCase {
         this.vueloService = vueloService;
     }
 
-    public List<Vuelos> execute(String ciudadOrigen, String ciudadDestino) {
-        return vueloService.searchVueloxCiudad(ciudadOrigen, ciudadDestino);
+    public List<Vuelos> execute(String ciudadOrigen, String ciudadDestino, String fechaviaje) {
+        return vueloService.searchVueloxCiudad(ciudadOrigen, ciudadDestino, fechaviaje);
     }
 
     
