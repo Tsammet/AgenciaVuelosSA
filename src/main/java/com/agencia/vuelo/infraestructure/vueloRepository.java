@@ -32,6 +32,7 @@ public class vueloRepository implements vueloService {
         System.out.println("URL: " + url); // Verificar la URL cargada
         System.out.println("User: " + user); // Verificar el usuario cargado
         // N
+        
         connection = DriverManager.getConnection(url, user, password);
         System.out.println("Conexión exitosa!");
       } catch (Exception e) {
