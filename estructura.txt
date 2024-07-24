@@ -1,0 +1,210 @@
+CREATE TABLE paises (
+    id VARCHAR(5) PRIMARY KEY,
+    nombre VARCHAR(30)
+
+);
+
+
+CREATE TABLE ciudades (
+    id VARCHAR(5)PRIMARY KEY,
+    nombre VARCHAR(50),
+    idpaises VARCHAR(5),
+    FOREIGN KEY (idpaises) REFERENCES paises(id)
+);
+
+
+CREATE TABLE aeropuertos (
+     id VARCHAR(5) PRIMARY KEY,
+    nombre VARCHAR(50),
+    idciudad VARCHAR(5),
+    FOREIGN KEY (idciudad) REFERENCES ciudades(id)
+);
+
+
+CREATE TABLE puertas (
+     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    numeropuerta VARCHAR(10) NOT NULL,
+    idaeropuerto VARCHAR(5) NULL,
+    FOREIGN KEY (idaeropuerto) REFERENCES aeropuertos(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE fabricantes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(45)
+);
+
+
+CREATE TABLE modelos (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    idfabricante INT NULL,
+    FOREIGN KEY (idfabricante) REFERENCES fabricantes(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE estados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30)   
+);
+
+
+CREATE TABLE tiposdocumentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(45)
+);
+
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(45)
+);
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nombre VARCHAR(20) NOT NULL,
+    edad INT NOT NULL,
+    idtipodocumento INT NULL,
+    numerodocumento VARCHAR(30),
+    rol int NULL,
+    FOREIGN KEY (idtipodocumento) REFERENCES tiposdocumentos(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (rol) REFERENCES roles(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE tarifasvuelos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(20),
+    detalles TEXT,
+    valor DOUBLE(7,3)
+);
+
+CREATE TABLE viajes(
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    fechaviaje DATE NOT NULL,
+    precioviaje DOUBLE,
+    idorigenaeropuerto VARCHAR(5) NULL,
+    iddestinoaeropuerto VARCHAR(5) NULL,
+        FOREIGN KEY (idorigenaeropuerto) REFERENCES aeropuertos(id) ON DELETE SET NULL ON UPDATE CASCADE,
+        FOREIGN KEY (iddestinoaeropuerto) REFERENCES aeropuertos(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+    
+CREATE TABLE reservaviaje (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    fecha DATE NOT NULL,
+    idvuelos INT NULL,
+    idclientes INT NULL,
+    FOREIGN KEY (idvuelos) REFERENCES viajes(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idclientes) REFERENCES clientes(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE detallesreservaviaje (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idreserva INT NULL,
+    idpasajero INT NULL,
+    idtarifa INT NULL,
+    FOREIGN KEY (idreserva) REFERENCES reservaviaje(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idpasajero) REFERENCES clientes(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idtarifa) REFERENCES tarifasvuelos(id) ON DELETE SET NULL ON UPDATE CASCADE
+
+);
+
+CREATE TABLE asientos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numeroasiento INT
+  
+);
+
+CREATE TABLE aerolineas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30)
+);
+
+CREATE TABLE puestostripulacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(40)
+);
+
+CREATE TABLE empleados (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(40) NOT NULL, 
+    idtipodocumento INT NULL,
+    numerodocumento VARCHAR(30) NOT NULL,
+    fechaingreso DATE,
+    idpuesto INT NULL,
+    idaerolinea INT NULL,
+    idaeropuerto VARCHAR(5) NULL,
+    FOREIGN KEY (idpuesto) REFERENCES puestostripulacion(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idaeropuerto) REFERENCES aeropuertos(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idaerolinea) REFERENCES aerolineas(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idtipodocumento) REFERENCES tiposdocumentos(id) ON DELETE SET NULL ON UPDATE CASCADE
+
+);
+
+CREATE TABLE aviones (
+    id INT AUTO_INCREMENT,
+    matricula VARCHAR(30) UNIQUE,
+    capacidad INT NOT NULL,
+    fechafabricacion DATE NOT NULL,
+    idestado INT NULL,
+    idmodelo INT NULL,
+    idaerolinea INT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idestado) REFERENCES estados(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idmodelo) REFERENCES modelos(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idaerolinea) REFERENCES aerolineas(id) ON DELETE SET NULL ON UPDATE CASCADE
+
+);
+
+
+CREATE TABLE revisiones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecharevision DATE NOT NULL,
+    idavion INT NULL,
+    FOREIGN KEY (idavion) REFERENCES aviones(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE revisiondetalles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idrevision INT NULL,
+    descripcion TEXT,
+    idempleado INT NULL,
+    FOREIGN KEY (idrevision) REFERENCES revisiones(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idempleado) REFERENCES empleados(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE conexionesvuelos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numeroconexion VARCHAR(20) NOT NULL,
+    idviaje INT NULL,
+    idavion INT NULL,
+    salidaidaeropuerto VARCHAR(6) NULL,
+    llegadaidaeropuerto VARCHAR(6) NULL,
+    FOREIGN KEY (idviaje) REFERENCES viajes(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idavion) REFERENCES aviones(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (salidaidaeropuerto) REFERENCES aeropuertos(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (llegadaidaeropuerto) REFERENCES aeropuertos(id) ON DELETE SET NULL ON UPDATE CASCADE
+);  
+
+CREATE TABLE tripulantes (
+    idempleado INT NULL,
+    idconexion INT NULL,
+    UNIQUE (idempleado, idconexion),
+    FOREIGN KEY (idempleado) REFERENCES empleados(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idconexion) REFERENCES conexionesvuelos(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE asientodetallereservaviajeconexion (
+    idconexionvuelos INT NULL,
+    iddetallereserva INT NULL,
+    idasientos INT NULL,    
+    UNIQUE (idconexionvuelos, iddetallereserva),    
+    FOREIGN KEY (idconexionvuelos) REFERENCES conexionesvuelos(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (iddetallereserva) REFERENCES detallesreservaviaje(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idasientos) REFERENCES asientos(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE user(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	usuario VARCHAR(20) NULL,
+	passw VARCHAR(20) NULL,
+	idRol INT NULL,
+	FOREIGN KEY (idRol) REFERENCES roles(id) ON DELETE SET NULL ON UPDATE CASCADE);
+	
+

@@ -1,0 +1,643 @@
+INSERT INTO paises (id, nombre) VALUES ('ESP', 'España');
+INSERT INTO paises (id, nombre) VALUES ('FRA', 'Francia');
+INSERT INTO paises (id, nombre) VALUES ('USA', 'Estados Unidos');
+INSERT INTO paises (id, nombre) VALUES ('GER', 'Alemania');
+INSERT INTO paises (id, nombre) VALUES ('COL', 'Colombia');
+
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('MAD', 'Madrid', 'ESP');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('BCN', 'Barcelona', 'ESP');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('VAL', 'Valencia', 'ESP');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('SEV', 'Sevilla', 'ESP');
+
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('PAR', 'París', 'FRA');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('LYO', 'Lyon', 'FRA');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('MAR', 'Marsella', 'FRA');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('NIC', 'Niza', 'FRA');
+
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('NYC', 'Nueva York', 'USA');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('LAX', 'Los Ángeles', 'USA');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('CHI', 'Chicago', 'USA');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('MIA', 'Miami', 'USA');
+
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('BER', 'Berlín', 'GER');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('MUC', 'Múnich', 'GER');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('HAM', 'Hamburgo', 'GER');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('FRA', 'Fráncfort', 'GER');
+
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('BOG', 'Bogotá', 'COL');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('MED', 'Medellín', 'COL');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('CLO', 'Cali', 'COL');
+INSERT INTO ciudades (id, nombre, idpaises) VALUES ('CAR', 'Cartagena', 'COL');
+
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('MAD1', 'Aeropuerto Adolfo Suárez Madrid-Barajas', 'MAD');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('BCN1', 'Aeropuerto de Barcelona-El Prat', 'BCN');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('VAL1', 'Aeropuerto de Valencia', 'VAL');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('SEV1', 'Aeropuerto de Sevilla', 'SEV');
+
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('PAR1', 'Aeropuerto Charles de Gaulle', 'PAR');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('PAR2', 'Aeropuerto de Orly', 'PAR');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('LYO1', 'Aeropuerto de Lyon-Saint Exupéry', 'LYO');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('MAR1', 'Aeropuerto de Marsella-Provenza', 'MAR');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('NIC1', 'Aeropuerto de Niza-Costa Azul', 'NIC');
+
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('NYC1', 'Aeropuerto Internacional John F. Kennedy', 'NYC');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('NYC2', 'Aeropuerto de LaGuardia', 'NYC');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('LAX1', 'Aeropuerto Internacional de Los Ángeles', 'LAX');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('CHI1', 'Aeropuerto Internacional Hare', 'CHI');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('MIA1', 'Aeropuerto Internacional de Miami', 'MIA');
+
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('BER1', 'Aeropuerto de Berlín-Brandeburgo', 'BER');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('MUC1', 'Aeropuerto de Múnich-Franz Josef Strauss', 'MUC');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('HAM1', 'Aeropuerto de Hamburgo', 'HAM');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('FRA1', 'Aeropuerto de Fráncfort', 'FRA');
+
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('BOG1', 'Aeropuerto Internacional El Dorado', 'BOG');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('MED1', 'Aeropuerto Internacional José María Córdova', 'MED');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('CLO1', 'Aeropuerto Internacional Alfonso Bonilla Aragón', 'CLO');
+INSERT INTO aeropuertos (id, nombre, idciudad) VALUES ('CAR1', 'Aeropuerto Internacional Rafael Núñez', 'CAR');
+
+
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'MAD1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'BCN1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'VAL1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'SEV1');
+
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'PAR1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P2', 'PAR1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P3', 'PAR1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'PAR2');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'LYO1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'MAR1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'NIC1');
+
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'NYC1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P2', 'NYC1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'NYC2');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'LAX1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'CHI1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'MIA1');
+
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'BER1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'MUC1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'HAM1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'FRA1');
+
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'BOG1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P2', 'BOG1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P3', 'BOG1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'MED1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'CLO1');
+INSERT INTO puertas (numeropuerta, idaeropuerto) VALUES ('P1', 'CAR1');
+
+INSERT INTO fabricantes (nombre) VALUES ('Airbus');
+INSERT INTO fabricantes (nombre) VALUES ('Boeing');
+INSERT INTO fabricantes (nombre) VALUES ('Embraer');
+INSERT INTO fabricantes (nombre) VALUES ('Bombardier');
+
+INSERT INTO modelos (nombre, idfabricante) VALUES ('A320', 1);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('A330', 1);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('A350', 1);
+
+INSERT INTO modelos (nombre, idfabricante) VALUES ('737', 2);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('747', 2);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('787', 2);
+
+INSERT INTO modelos (nombre, idfabricante) VALUES ('ERJ-145', 3);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('E-Jet E2', 3);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('Legacy 650', 3);
+
+INSERT INTO modelos (nombre, idfabricante) VALUES ('CRJ700', 4);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('Global 7500', 4);
+INSERT INTO modelos (nombre, idfabricante) VALUES ('Q400', 4);
+
+INSERT INTO estados (nombre) VALUES ('En servicio');
+INSERT INTO estados (nombre) VALUES ('En mantenimiento');
+INSERT INTO estados (nombre) VALUES ('Fuera de servicio');
+INSERT INTO estados (nombre) VALUES ('En reparación');
+INSERT INTO estados (nombre) VALUES ('En espera de revisión');
+INSERT INTO estados (nombre) VALUES ('En reserva');
+
+INSERT INTO tiposdocumentos (nombre) VALUES ('DNI');
+INSERT INTO tiposdocumentos (nombre) VALUES ('Pasaporte');
+INSERT INTO tiposdocumentos (nombre) VALUES ('Cédula de identidad');
+
+INSERT INTO roles (id, nombre)
+VALUES (1, "cliente");
+INSERT INTO roles (id, nombre)
+VALUES (2, "administrador");
+INSERT INTO roles (id, nombre)
+VALUES (3, "tecnico mantenimiento");
+INSERT INTO roles (id, nombre)
+VALUES (4, "agente de ventas");
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Juan Pérez', 30, 1, '12345678',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('María López', 25, 2, 'AB123456',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Pedro Gómez', 28, 3, 'C1234567',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Ana Martínez', 35, 1, '87654321',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Carlos Rodríguez', 40, 2, 'CD654321',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Laura Sánchez', 32, 3, 'E7654321',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Santiago Vargas', 27, 1, '98765432',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Elena Rojas', 29, 1, '23456789',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Martín Soto', 31, 2, 'EF234567',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Luisa Herrera', 26, 3, 'G2345678',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Andrés Castro', 33, 1, '87654321',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Paula Díaz', 37, 2, 'GH654321',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Mario Gutiérrez', 30, 3, 'I7654321',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Alejandra Ramírez', 28, 1, '98765432',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Gabriel Torres', 34, 1, '34567890',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Valeria Núñez', 27, 2, 'IJ345678',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+
+VALUES ('Jorge Pérez', 32, 3, 'J3456789',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Lucía Castro', 36, 1, '98765432',2);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Diego Muñoz', 39, 2, 'KL654321',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Carolina Jiménez', 25, 3, 'M7654321',1);
+
+INSERT INTO clientes (nombre, edad, idtipodocumento, numerodocumento,rol)
+VALUES ('Mateo Sánchez', 31, 1, '09876543',1);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Eco Nac Estándar', 'Asiento estándar, vuelo nacional', 120.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Eco Int Estándar', 'Asiento estándar, vuelo internacional', 200.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Eje Nac Amplio', 'Asiento amplio, vuelo nacional', 300.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Eje Int Amplio', 'Asiento amplio, vuelo internacional', 450.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Prim Nac Especial', 'Asiento especial, vuelo nacional', 500.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Prim Int Especial', 'Asiento especial, vuelo internacional', 700.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Eco Prom Nac Est', 'Asiento estándar, vuelo nacional (promoción)', 90.00);
+
+INSERT INTO tarifasvuelos (descripcion, detalles, valor)
+VALUES ('Eco Prom Int Est', 'Asiento estándar, vuelo internacional (promoción)', 150.00);
+
+
+INSERT INTO viajes (id, fechaviaje, precioviaje, idorigenaeropuerto, iddestinoaeropuerto)
+VALUES 
+    (1, '2024-08-15', 250, 'MAD1', 'LAX1'),
+    (2, '2024-08-20', 300, 'LYO1', 'MAR1'),
+    (3, '2024-09-05', 200, 'HAM1', 'MIA1'),
+    (4, '2024-09-10', 350, 'BOG1', 'MIA1'),
+    (5, '2024-10-01', 180, 'NYC1', 'PAR1');
+
+
+INSERT INTO reservaviaje (fecha, idvuelos,idclientes)
+VALUES ('2024-08-10', 1,1); 
+INSERT INTO reservaviaje (fecha, idvuelos,idclientes)
+VALUES ('2024-08-18', 2,2); 
+INSERT INTO reservaviaje (fecha, idvuelos,idclientes)
+VALUES ('2024-09-02', 3,3); 
+INSERT INTO reservaviaje (fecha, idvuelos,idclientes)
+VALUES ('2024-09-08', 4,4); 
+INSERT INTO reservaviaje (fecha, idvuelos,idclientes)
+VALUES ('2024-09-25', 5,5); 
+
+INSERT INTO detallesreservaviaje (idreserva, idpasajero, idtarifa)
+VALUES (1, 1, 1);
+INSERT INTO detallesreservaviaje (idreserva, idpasajero, idtarifa)
+VALUES (2, 2, 2); 
+INSERT INTO detallesreservaviaje (idreserva, idpasajero, idtarifa)
+VALUES (3, 3, 3); INSERT INTO detallesreservaviaje (idreserva, idpasajero, idtarifa)
+VALUES (4, 4, 4); 
+INSERT INTO detallesreservaviaje (idreserva, idpasajero, idtarifa)
+VALUES (5, 5, 5); 
+
+
+
+INSERT INTO asientos (numeroasiento) VALUES (1);
+INSERT INTO asientos (numeroasiento) VALUES (2);
+INSERT INTO asientos (numeroasiento) VALUES (3);
+INSERT INTO asientos (numeroasiento) VALUES (4);
+INSERT INTO asientos (numeroasiento) VALUES (5);
+INSERT INTO asientos (numeroasiento) VALUES (6);
+INSERT INTO asientos (numeroasiento) VALUES (7);
+INSERT INTO asientos (numeroasiento) VALUES (8);
+INSERT INTO asientos (numeroasiento) VALUES (9);
+INSERT INTO asientos (numeroasiento) VALUES (10);
+INSERT INTO asientos (numeroasiento) VALUES (11);
+INSERT INTO asientos (numeroasiento) VALUES (12);
+INSERT INTO asientos (numeroasiento) VALUES (13);
+INSERT INTO asientos (numeroasiento) VALUES (14);
+INSERT INTO asientos (numeroasiento) VALUES (15);
+INSERT INTO asientos (numeroasiento) VALUES (16);
+INSERT INTO asientos (numeroasiento) VALUES (17);
+INSERT INTO asientos (numeroasiento) VALUES (18);
+INSERT INTO asientos (numeroasiento) VALUES (19);
+INSERT INTO asientos (numeroasiento) VALUES (20);
+
+
+INSERT INTO aerolineas (nombre) VALUES ('Iberia');
+INSERT INTO aerolineas (nombre) VALUES ('Vueling');
+INSERT INTO aerolineas (nombre) VALUES ('Air Europa');
+
+INSERT INTO aerolineas (nombre) VALUES ('Air France');
+INSERT INTO aerolineas (nombre) VALUES ('EasyJet');
+INSERT INTO aerolineas (nombre) VALUES ('Transavia');
+
+INSERT INTO aerolineas (nombre) VALUES ('American Airlines');
+INSERT INTO aerolineas (nombre) VALUES ('Delta Air Lines');
+INSERT INTO aerolineas (nombre) VALUES ('United Airlines');
+
+INSERT INTO aerolineas (nombre) VALUES ('Lufthansa');
+INSERT INTO aerolineas (nombre) VALUES ('Eurowings');
+INSERT INTO aerolineas (nombre) VALUES ('Condor');
+
+INSERT INTO aerolineas (nombre) VALUES ('Avianca');
+INSERT INTO aerolineas (nombre) VALUES ('LATAM Airlines');
+INSERT INTO aerolineas (nombre) VALUES ('Viva Air');
+
+INSERT INTO puestostripulacion (nombre) VALUES ('Piloto');
+INSERT INTO puestostripulacion (nombre) VALUES ('Copiloto');
+INSERT INTO puestostripulacion (nombre) VALUES ('Sobrecargo');
+INSERT INTO puestostripulacion (nombre) VALUES ('Azafata');
+INSERT INTO puestostripulacion (nombre) VALUES ('Técnico de vuelo');
+INSERT INTO puestostripulacion (nombre) VALUES ('Mecánico de vuelo');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (1, 'Juan Pérez', 1, '12345678', '2023-01-15', 1, 1, 'MAD1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (2, 'Ana Martínez', 1, '87654321', '2023-02-20', 3, 1, 'BCN1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (3, 'Pedro Gómez', 2, 'P9876543', '2023-03-10', 2, 1, 'MAD1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (4, 'Elena Sánchez', 1, 'S5678901', '2023-04-05', 1, 1, 'BCN1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (5, 'Carlos Ruiz', 3, 'C2345678', '2023-05-15', 3, 1, 'MAD1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (6, 'Laura Fernández', 1, 'L3456789', '2023-06-20', 1, 1, 'BCN1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (7, 'Pierre Dupont', 2, 'A9876543', '2023-07-15', 1, 4, 'PAR1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (8, 'Marie Leclerc', 1, 'M8765432', '2023-08-20', 2, 4, 'PAR1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (9, 'Jacques Martin', 1, 'J7654321', '2023-09-10', 3, 4, 'PAR1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (10, 'Sophie Bernard', 3, 'S6543210', '2023-10-05', 1, 4, 'PAR1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (11, 'Étienne Lefevre', 1, 'E5432109', '2023-11-15', 2, 4, 'PAR1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (12, 'Charlotte Moreau', 1, 'C4321098', '2023-12-20', 1, 4, 'PAR1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (13, 'John Smith', 1, 'J5678901', '2024-01-15', 1, 7, 'NYC1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (14, 'Emily Johnson', 1, 'E4567890', '2024-02-20', 2, 7, 'NYC1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (15, 'Michael Brown', 1, 'M3456789', '2024-03-10', 3, 7, 'NYC1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (16, 'Sarah Davis', 1, 'S2345678', '2024-04-05', 1, 7, 'NYC1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (17, 'Robert Miller', 1, 'R1234567', '2024-05-15', 2, 7, 'NYC1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (18, 'Olivia Wilson', 1, 'O0123456', '2024-06-20', 1, 7, 'NYC1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (19, 'Hans Müller', 3, 'C2345678', '2024-07-15', 3, 10, 'BER1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (20, 'Greta Schmidt', 1, 'G1234567', '2024-08-20', 1, 10, 'BER1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (21, 'Klaus Fischer', 2, 'K2345678', '2024-09-10', 2, 10, 'BER1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (22, 'Julia Weber', 1, 'J3456789', '2024-10-05', 3, 10, 'BER1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (23, 'Max Lehmann', 1, 'M4567890', '2024-11-15', 1, 10, 'BER1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (24, 'Frieda Schneider', 1, 'F5678901', '2024-12-20', 2, 10, 'BER1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (25, 'Andrés López', 1, 'A5678901', '2025-01-15', 1, 13, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (26, 'Camila Ramírez', 1, 'C4567890', '2025-02-20', 2, 13, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (27, 'Jorge Gutiérrez', 1, 'J3456789', '2025-03-10', 3, 13, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (28, 'María Duarte', 1, 'M2345678', '2025-04-05', 1, 13, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (29, 'Santiago Castillo', 1, 'S1234567', '2025-05-15', 2, 13, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (30, 'Valentina Herrera', 1, 'V0123456', '2025-06-20', 1, 13, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (31, 'Daniel Ospina', 1, 'D2345678', '2025-07-15', 1, 15, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (32, 'Isabela López', 1, 'I3456789', '2025-08-20', 2, 15, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (33, 'Martín Ramírez', 1, 'M4567890', '2025-09-10', 3, 15, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (34, 'Lucía Gómez', 1, 'L5678901', '2025-10-05', 1, 15, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (35, 'Mateo Rodríguez', 1, 'M6789012', '2025-11-15', 2, 15, 'BOG1');
+
+INSERT INTO empleados (id, nombre, idtipodocumento, numerodocumento, fechaingreso, idpuesto, idaerolinea, idaeropuerto)
+VALUES (36, 'Valeria Martínez', 1, 'V7890123', '2025-12-20', 1, 15, 'BOG1');
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (1, 'EC-JNB', 250, '2018-05-15', 1, 1, 1);  -- Airbus A320
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (2, 'EC-MVM', 300, '2017-09-20', 2, 2, 1);  -- Airbus A330
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (3, 'EC-KDH', 350, '2019-02-10', 3, 3, 1);  -- Airbus A350
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (4, 'F-GKXA', 200, '2016-11-30', 1, 4, 4);  -- Boeing 737
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (5, 'F-HMLB', 280, '2018-03-25', 2, 5, 4);  -- Boeing 777
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (6, 'F-HRBA', 320, '2019-06-12', 3, 6, 4);  -- Boeing 787
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (7, 'N123AA', 220, '2017-08-15', 1, 7, 7);  -- Airbus A220
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (8, 'N234AA', 260, '2018-01-20', 2, 1, 7);  -- Airbus A320
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (9, 'N345AA', 300, '2019-04-05', 3, 2, 7);  -- Airbus A330
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (10, 'D-AIBC', 220, '2016-10-10', 1, 4, 10);  -- Boeing 737
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (11, 'D-AILE', 280, '2017-12-05', 2, 5, 10);  -- Boeing 777
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (12, 'D-AIVA', 320, '2019-08-20', 3, 6, 10);  -- Boeing 787
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (13, 'HK-5689', 180, '2017-03-10', 1, 1, 13);  -- Airbus A320
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (14, 'HK-7890', 250, '2018-05-15', 2, 2, 13);  -- Airbus A330
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (15, 'HK-9012', 300, '2019-10-01', 3, 3, 13);  -- Airbus A350
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (16, 'HK-3456', 180, '2018-02-28', 1, 7, 15);  -- ERJ-145
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (17, 'HK-4567', 250, '2019-04-15', 2, 8, 15);  -- E-Jet E2
+
+INSERT INTO aviones (id, matricula, capacidad, fechafabricacion, idestado, idmodelo, idaerolinea)
+VALUES (18, 'HK-5678', 300, '2020-07-20', 3, 9, 15);  -- Legacy 650
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-02-15', 1);
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-06-20', 1); 
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-03-10', 2); 
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-08-05', 3);
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-04-10', 4);
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-01-15', 5);
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-09-30', 6); 
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-01-05', 7); 
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-07-20', 8); 
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-03-15', 9); 
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-08-30', 10);
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-02-10', 11); 
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-11-20', 12); 
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-05-10', 13); 
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-10-25', 14);
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-04-15', 15); 
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-09-10', 16);
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2024-02-28', 17); 
+
+INSERT INTO revisiones (fecharevision, idavion)
+VALUES ('2023-12-10', 18); 
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (1, 'Revisión completa de motor y sistemas.', 5);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (2,  'Inspección detallada de fuselaje y controles.', 6);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (
+    3, 'Pruebas de rendimiento y ajustes de motor.', 6);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (4, 'Verificación de sistemas de emergencia y seguridad.', 5);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (5,  'Inspección exhaustiva de componentes críticos.', 10);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (6,     'Mantenimiento preventivo de sistemas de aviónica.', 11 );
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES ( 7, 'Calibración y ajustes de instrumentos de vuelo.',  12);
+
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (8,     'Revisión de sistemas de comunicación y navegación.',  1 );
+
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (9,    'Verificación de estructuras y componentes de seguridad.',3 );
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES ( 10,  'Pruebas de rendimiento y ajustes de sistema de combustible.', 2);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (11,  'Mantenimiento de sistemas de frenos y tren de aterrizaje.',  7);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (12, 'Revisión de aviónica avanzada y sistemas de navegación.', 8);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (13,'Verificación de sistemas de presurización y climatización.', 9);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (14, 'Revisión de sistemas hidráulicos y de control de vuelo.',  13 );
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (15,     'Mantenimiento de motores y sistemas de combustible.', 14);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (16,     'Inspección detallada de componentes de cabina y confort.', 15);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES ( 17,     'Calibración de sistemas de navegación y comunicación.',  17);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (18,     'Verificación de sistemas de control de vuelo y seguridad.', 18);
+
+INSERT INTO revisiondetalles (idrevision, descripcion, idempleado)
+VALUES (
+    19, 
+    'Revisión de sistemas de aviónica y control ambiental.', 
+    19
+);
+
+
+INSERT INTO conexionesvuelos (id, numeroconexion, idviaje, idavion, salidaidaeropuerto, llegadaidaeropuerto)
+VALUES 
+    (1, 'CV-001', 1, 3, 'MAD1', 'LYO1'),
+    (2, 'CV-002', 2, 2, 'LYO1', 'SEV1'),
+    (3, 'CV-003', 3, 3, 'HAM1', 'MAR1'),
+    (4, 'CV-004', 4, 4, 'BOG1', 'CHI1'),
+    (5, 'CV-005', 5, 5, 'NYC1', 'LYO1'),
+    (6, 'CV-006', 4, 2, 'MIA1', 'NYC1'),
+    (7, 'CV-007', 2, 6, 'MUC1', 'MAR1'),
+    (9, 'CV-009', 3, 18, 'PAR2', 'MIA1'),
+    (10, 'CV-010', 4, 11, 'CAR1', 'CLO1'),
+    (11, 'CV-011', 4, 10, 'CHI1', 'CAR1'),
+    (12, 'CV-012', 5, 4, 'LYO1', 'FRA1');
+
+
+INSERT INTO tripulantes (idconexion, idempleado)
+VALUES (
+    1, 
+    1
+);
+
+INSERT INTO tripulantes (idconexion, idempleado)
+VALUES (
+    1, 
+    2
+);
+
+INSERT INTO tripulantes (idconexion, idempleado)
+VALUES (
+    2, 
+    3
+);
+
+INSERT INTO tripulantes (idconexion, idempleado)
+VALUES (
+    3, 
+    4
+);
+
+INSERT INTO tripulantes (idconexion, idempleado)
+VALUES (
+    4, 
+    5
+);
+
+INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetallereserva, idasientos)
+VALUES (1, 1, 1);
+
+INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetallereserva, idasientos)
+VALUES (2, 2, 2);
+
+INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetallereserva, idasientos)
+VALUES (3, 3, 3);
+
+INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetallereserva, idasientos)
+VALUES (4, 4, 4);
+
+INSERT INTO asientodetallereservaviajeconexion (idconexionvuelos, iddetallereserva, idasientos)
+VALUES (5, 5, 5);
+
+
+INSERT INTO user(usuario, passw, idRol) 
+VALUES ("Silvis", "12345", 2), 
+("carlos", "123", 2), 
+("charles", "1234", 1), 
+("Olfer", "12345", 3), 
+("agenteventas1", "123", 4);  
